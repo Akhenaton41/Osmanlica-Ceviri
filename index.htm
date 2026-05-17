@@ -1,12 +1,12 @@
 <html><head>
 <meta http-equiv="Content-Language" content="tr">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
-<title>Osmanlýca Çeviri</title>
-<link rel="stylesheet" type="text/css" href="css\font.css">
-<link rel="stylesheet" type="text/css" href="css\buton.css">
+<title>Osmanlıca Çeviri</title>
+<link rel="stylesheet" type="text/css" href="css/font.css">
+<link rel="stylesheet" type="text/css" href="css/buton.css">
 
 <style>
-/* --- WINDOWS KLASÝK DOSYA SEÇÝM PENCERESÝ STÝLLERÝ --- */
+/* --- WINDOWS KLASİK DOSYA SEÇİM PENCERESİ STİLLERİ --- */
 .win-modal-overlay {
     display: none;
     position: fixed;
@@ -97,7 +97,7 @@
     overflow-y: auto;
     padding: 4px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Dosyalarý yan yana 3 sütun dizer */
+    grid-template-columns: repeat(3, 1fr); /* Dosyaları yan yana 3 sütun dizer */
     grid-auto-rows: max-content;
     gap: 4px;
 }
@@ -106,13 +106,13 @@
     display: flex;
     align-items: center;
     padding: 2px;
-    cursor: default; /* Mouse imlecini standart ok yapar, metin seçme çizgisi çýkmaz */
+    cursor: default; /* Mouse imlecini standart ok yapar, metin seçme çizgisi çıkmaz */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     border: 1px solid transparent;
     
-    /* DOSYA HARFLERÝNÝN SEÇÝLMESÝNÝ ENGELLEYEN KRÝTÝK KODLAR */
+    /* DOSYA HARFLERİNİN SEÇİLMESİNİ ENGELLEYEN KRİTİK KODLAR */
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -198,19 +198,19 @@
 <table id="tablo" border="0" width="100%" cellspacing="0" cellpadding="0">
 	<tr class="golgeli">
 		<td colspan="2" id="banner">
-		<h1>Osmanlýca Çeviri Aracý</h1><h2>Sürüm 6.0</h2>
+		<h1>Osmanlıca Çeviri Aracı</h1><h2>Sürüm 6.0</h2>
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2"><div class="copyright">&#169; Bu yazýlýmýn bütün haklarý 
-			<a href="mailto:lusiyen@hotmail.com" target="_blank">Mehmet Akif Ardýç</a> (Akhenaton)’a aittir. 
-			Bu yazýlým, <b>tamamen ücretsizdir</b> ve indirilmiþ bir içerik olarak 
-			kiþisel bilgisayarlarda ve eðitim amaçlý kurumlarda kullanýlabilir. Ýzinsiz hiçbir websitesine 
+		<td colspan="2"><div class="copyright">&#169; Bu yazılımın bütün hakları 
+			<a href="mailto:lusiyen@hotmail.com" target="_blank">Mehmet Akif Ardıç</a> (Akhenaton)’a aittir. 
+			Bu yazılım, <b>tamamen ücretsizdir</b> ve indirilmiş bir içerik olarak 
+			kişisel bilgisayarlarda ve eğitim amaçlı kurumlarda kullanılabilir. İzinsiz hiçbir websitesine 
 			entegre edilemez.</div></td>
 	</tr>
 	<tr>
 		<td colspan="2"><div id="ceviriInput" class="golgeli">
-			<div class="baslik">Osmanlýca metni ya da görsel urlsini aþaðýdaki kutuya yapýþtýrýn.</div>
+			<div class="baslik">Osmanlıca metni ya da görsel urlsini aşağıdaki kutuya yapıştırın.</div>
 			<div id="input" contenteditable="true" class="arabic" onInput="save()">
 				&nbsp;</div>
 		</div></td>
@@ -243,7 +243,7 @@
 			
 		</div></td>
 		<td><div id="ceviriSadelestirme" class="golgeli" onload="yuklemeEkrani$[1].style.display='none'">
-			<div class="baslik">Sadeleþtirilmiþ Metin</div>
+			<div class="baslik">Sadeleştirilmiş Metin</div>
 			<div id="cikti2" lang="tr"></div>
 			
 			<div class="yuklemeEkrani"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
@@ -252,7 +252,7 @@
 	</tr>
 	
 	<tr> 
-		<td colspan="2"><br><br><div class="golgeli"><div class="baslik">Veri Bankasý Ýstatistikleri <div class="material-icons" onclick="gosterGizle(this)">add</div> </div><div id="cikti3"></div></div></td>
+		<td colspan="2"><br><br><div class="golgeli"><div class="baslik">Veri Bankası İstatistikleri <div class="material-icons" onclick="gosterGizle(this)">add</div> </div><div id="cikti3"></div></div></td>
 	</tr>
 	
 	</table>
@@ -267,7 +267,7 @@
             <div class="win-close-btn" onclick="winPencerisiniKapat()">×</div>
         </div>
         <div class="win-toolbar">
-            <span class="win-label">Bakýlan yer:</span>
+            <span class="win-label">Bakılan yer:</span>
             <div class="win-dropdown-mimic">
                 <span>örnek dosyalar</span>
                 <span style="font-size: 9px; color: #808080;">&#9660;</span>
@@ -278,14 +278,14 @@
         
         <div id="winFileView" class="win-file-view">
             <div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">
-                GitHub arþivi taranýyor...
+                GitHub arşivi taranıyor...
             </div>
         </div>
         
         <div class="win-bottom-bar">
             <div class="win-fields">
                 <div class="win-field-row">
-                    <label>Dosya adý:</label>
+                    <label>Dosya adı:</label>
                     <input type="text" id="winFileNameInput" class="win-input-text" readonly>
                 </div>
                 <div class="win-field-row" style="margin-top: 4px;">
@@ -295,7 +295,7 @@
             </div>
             <div class="win-buttons">
                 <div class="win-btn" style="font-weight: bold;" onclick="winSecilenDosyayiAc()">Aç</div>
-                <div class="win-btn" onclick="winPencerisiniKapat()">Ýptal</div>
+                <div class="win-btn" onclick="winPencerisiniKapat()">İptal</div>
             </div>
         </div>
     </div>
@@ -307,7 +307,7 @@
 <script>
 var arabic = /[\u0600-\u06FF]/; Aktif1=false; Aktif2=false
 
-var harfler=new Array(" ne · &#65255;&#65258; ","8·[&#1783;&#1640;]","e·&#1749;","3·&#1635;","4·&#1636;","9·[&#1785;&#1641;]","i·&#65164;","la·&#65275;","y·&#1744;","i·&#1573;","in·&#1613;","t·&#1577;","â·&#1648;","Allâh·&#65010;","n·&#1611;","6·&#1638;","2·&#1634;","1·&#1633;","n·&#8204;&#1611;","j·&#1688;",";·&#1563;","?·&#1567;","·&#1616;","·&#1618;","·&#1614;","·&#1615;","ñ·&#1891;","0·[&#1776;&#1632;]","5·&#1637;","-i·&#1728;","2·&#1778;","3·&#1779;","1·&#1777;","ten·&#1577;&#1611;",";·&#1563;","ü·&#1572;","&#7829;·&#1584;",",·&#1644;","?·&#1567;",",·&#1548;","ñ·[&#1705;&#1709;]","p·&#1662;","n·&#1575;&#1611;","e·&#1571;","ç·&#1670;","i·[&#1569;&#1740;&#1574;]","ð·&#1594;","&#380;·&#1590;","s&#817;·&#1579;","&#7789;·&#1591;","g·&#1711;","a·&#1570;","&#7779;·&#1589;","þ·&#1588;","&#7580;·&#1593;","e·&#1607;","z·&#1586;","&#7723;·&#1582;","i·&#1610;","d·&#1583;","&#7717;·&#1581;","æ·&#1575;","m·&#1605;","s·&#1587;","&#7731;·&#1602;","f·&#1601;","n·&#1606;","b·&#1576;","l·&#1604;","c·&#1580;","y·&#1609;","k·&#1603;","r·&#1585;","v·&#1608;","&#7827;·&#1592;","t·&#1578;")
+var harfler=new Array(" ne · &#65255;&#65258; ","8·[&#1783;&#1640;]","e·&#1749;","3·&#1635;","4·&#1636;","9·[&#1785;&#1641;]","i·&#65164;","la·&#65275;","y·&#1744;","i·&#1573;","in·&#1613;","t·&#1577;","â·&#1648;","Allâh·&#65010;","n·&#1611;","6·&#1638;","2·&#1634;","1·&#1633;","n·&#8204;&#1611;","j·&#1688;",";·&#1563;","?·&#1567;","·&#1616;","·&#1618;","·&#1614;","·&#1615;","ñ·&#1891;","0·[&#1776;&#1632;]","5·&#1637;","-i·&#1728;","2·&#1778;","3·&#1779;","1·&#1777;","ten·&#1577;&#1611;",";·&#1563;","ü·&#1572;","&#7829;·&#1584;",",·&#1644;","?·&#1567;",",·&#1548;","ñ·[&#1705;&#1709;]","p·&#1662;","n·&#1575;&#1611;","e·&#1571;","ç·&#1670;","i·[&#1569;&#1740;&#1574;]","ğ·&#1594;","&#380;·&#1590;","s&#817;·&#1579;","&#7789;·&#1591;","g·&#1711;","a·&#1570;","&#7779;·&#1589;","ş·&#1588;","&#7580;·&#1593;","e·&#1607;","z·&#1586;","&#7723;·&#1582;","i·&#1610;","d·&#1583;","&#7717;·&#1581;","æ·&#1575;","m·&#1605;","s·&#1587;","&#7731;·&#1602;","f·&#1601;","n·&#1606;","b·&#1576;","l·&#1604;","c·&#1580;","y·&#1609;","k·&#1603;","r·&#1585;","v·&#1608;","&#7827;·&#1592;","t·&#1578;")
 
 var yuklemeEkrani$=document.getElementsByClassName("yuklemeEkrani")
 
@@ -447,7 +447,7 @@ function cevir() {
     let s = t;
 
     if (premium) {
-        t = t.replace(/ð/g, "\u0121").replace(/û/g, "\u016B").replace(/â/g, "\u0101").replace(/\'/g, "’");
+        t = t.replace(/ğ/g, "\u0121").replace(/û/g, "\u016B").replace(/â/g, "\u0101").replace(/\'/g, "’");
     }
 
     duzelt2(t);
@@ -510,9 +510,9 @@ function paragrafaCevir(e){
 	
 	e=e.replace(/>[sS]n/g,">Sen ")
 	
-	e=e.replace(/<p><br>/g,"<p>") // fazla br taglarýný sil
+	e=e.replace(/<p><br>/g,"<p>") // fazla br taglarını sil
 	
-	if(!premium){e=e.replace(/\u0121/g,"ð")}
+	if(!premium){e=e.replace(/\u0121/g,"ğ")}
 	
 	return e
 	}
@@ -581,16 +581,16 @@ function transkripsiyon(e) {
 
     e = e.replace(/e k /g, "eñ ")
         .replace(/e ie /g, "eye ")
-        .replace(/a cðk/g, "acaðýñ")
+        .replace(/a cğk/g, "acağıñ")
         .replace(/e dn /g, "eden ")
         .replace(/âliny /g, "âlini ")
         .replace(/a(n)lr /g, "a$1lar ")
         .replace(/âly /g, "âli ")
         .replace(/ily /g, "ili ")
-        .replace(/([eiî])(.)lmþ/g, "$1$2ilmiþ")
-        .replace(/([âaý])lmþ/g, "$1lmýþ")
-        .replace(/([ouû])lmþ/g, "$1lmuþ")
-        .replace(/([öü])lmþ/g, "$1lmüþ")
+        .replace(/([eiî])(.)lmş/g, "$1$2ilmiş")
+        .replace(/([âaı])lmş/g, "$1lmış")
+        .replace(/([ouû])lmş/g, "$1lmuş")
+        .replace(/([öü])lmş/g, "$1lmüş")
         .replace(/([eiî])tk /g, "$1tiñ ")
         .replace(/([eiî]) sy /g, "$1si ")
         .replace(/([eiî])([\u1e6d])dn /g, "$1$2den ")
@@ -606,7 +606,7 @@ function transkripsiyon(e) {
 
 function sadelestir(e) {
     e = e.replace(/[\u1d9c]/g, "")
-        .replace(/\u0121/g, "ð")
+        .replace(/\u0121/g, "ğ")
         .replace(/\u016B/g, "û")
         .replace(/\u0101/g, "â")
         .replace(/’/g, "'")
@@ -735,7 +735,7 @@ function uzundanKisaya(e,ee){
 	return e
 	}
 
-// bir kelimeyi deðiþtiren kuralý bulur
+// bir kelimeyi değiştiren kuralı bulur
 function kuralKontrol(a1,a2){
 	
 	id("gizliDiv").innerHTML=" "+a1+" "
@@ -788,11 +788,11 @@ function kuralKontrol(a1,a2){
 	}
 
 function istatistikGetir(){
-	a$="Transkripsiyonel Karakter Sayýsý: <b>"+harfler.length+"</b><br>"
-	a$+="Osmanlýca Kural ve Kelime Sayýsý: <b>"+birebir.length+"</b><br>"
-	a$+="Osmanlýca Rütuþ Kural Sayýsý: <b>"+(birebirRutus.length+gorunmezRutus.length)+"</b><br>"
-	a$+="Sadeleþtirme Kural ve Kelime Sayýsý: <b>"+sade.length+"</b><br>"
-	a$+="Sadeleþtirme Rütuþ Kural Sayýsý: <b>"+(sadeRutus.length+sonSadeRutus.length)+"</b>"
+	a$="Transkripsiyonel Karakter Sayısı: <b>"+harfler.length+"</b><br>"
+	a$+="Osmanlıca Kural ve Kelime Sayısı: <b>"+birebir.length+"</b><br>"
+	a$+="Osmanlıca Rütuş Kural Sayısı: <b>"+(birebirRutus.length+gorunmezRutus.length)+"</b><br>"
+	a$+="Sadeleştirme Kural ve Kelime Sayısı: <b>"+sade.length+"</b><br>"
+	a$+="Sadeleştirme Rütuş Kural Sayısı: <b>"+(sadeRutus.length+sonSadeRutus.length)+"</b>"
 	id("cikti3").innerHTML=a$
 	}
 
@@ -812,25 +812,25 @@ function gosterGizle(e){
 
 function FazlaBosluklariSil(e){
 	
-	// Þeddeleri Sil	
+	// Şeddeleri Sil	
 	e=e.replace(/(.)\u0651/g,"$1")
 	//e=e.replace(new RegExp('\r?\n','g'), '');
 	
-	// Ön Rutuþ
+	// Ön Rutuş
 	e=e.trim().replace(/(\r|\n)/g,"")
 	e=e.replace(/\s{2,}/g, " ")
 	
 	// &nbsp;	
 	e=e.replace(" "+c$," ")
 
-	// noktalarý düzenle
+	// noktaları düzenle
 	e=e.replace(/[\.]{3}/g,".")
 	
 	
-	// Ön Boþluklarý Sil
+	// Ön Boşlukları Sil
 	e=e.replace(/<br> /g,"<br>")
 		
-	// Son Rütuþ
+	// Son Rütuş
 	e=e.trim().replace(/(\r|\n)/g,"")
 	
 	e=e.replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ")
@@ -838,7 +838,7 @@ function FazlaBosluklariSil(e){
 	}
 
 function ocrGetir(e){
-	id("input").innerText="Resim dosyasýndaki Osmanlýca metin çözümleniyor..."
+	id("input").innerText="Resim dosyasındaki Osmanlıca metin çözümleniyor..."
 	id("cikti1").HTML=""
 	id("cikti2").HTML=""
 	
@@ -851,7 +851,7 @@ function ocrGetir(e){
     cevir()
     
   }).catch(err => {
-    id("input").innerHTML  = 'Resim dosyasý çözülemedi!';
+    id("input").innerHTML  = 'Resim dosyası çözülemedi!';
     kaydir("input");
     return;
   });
@@ -907,7 +907,7 @@ function aciklamaEkle(e){
 	}
 
 function miladiTakvim(){
-	// Hazýrlanmamýþ modül
+	// Hazırlanmamış modül
 	p=id("cikti2").getElementsByTagName("p")
 	//alert(p.length)
 	}
@@ -963,7 +963,7 @@ function kaydir(hedefId) {
 }
 
 
-// --- RETRO WINDOWS DOSYA SEÇÝCÝ JAVASCRIPT MODÜLLERÝ ---
+// --- RETRO WINDOWS DOSYA SEÇİCİ JAVASCRIPT MODÜLLERİ ---
 const GH_KULLANICI = "Akhenaton41";
 const GH_REPO = "Osmanlica-Ceviri";
 const GH_KLASOR = "örnek dosyalar";
@@ -975,7 +975,7 @@ async function githubKlasorunuPencereyeYukle() {
     
     try {
         const response = await fetch(apiURL);
-        if (!response.ok) throw new Error("Depoya ulaþýlamadý");
+        if (!response.ok) throw new Error("Depoya ulaşılamadı");
         
         const dosyalar = await response.json();
         let dosyaElemanlari = "";
@@ -984,7 +984,7 @@ async function githubKlasorunuPencereyeYukle() {
         dosyalar.forEach(dosya => {
             if (dosya.name.toLowerCase().endsWith('.txt')) {
                 let temizAd = dosya.name.replace(/\.[^/.]+$/, "");
-                // Dosyalarý klasik Windows ikon yapýsý gibi listeliyoruz (&#128196;)
+                // Dosyaları klasik Windows ikon yapısı gibi listeliyoruz (&#128196;)
                 dosyaElemanlari += `
                     <div class="win-file-item" onclick="winDosyaSec(this, '${temizAd}', '${dosya.download_url}')">
                         <span class="win-file-icon">&#128196;</span>
@@ -997,11 +997,11 @@ async function githubKlasorunuPencereyeYukle() {
         if (txtVarMi) {
             fileView.innerHTML = dosyaElemanlari;
         } else {
-            fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">Klasörde metin dosyasý bulunamadý.</div>';
+            fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">Klasörde metin dosyası bulunamadı.</div>';
         }
     } catch (error) {
-        console.error("GitHub listesi alýnamadý:", error);
-        fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #cc0000;">Baðlantý Hatasý! Arþiv listesi alýnamadý.</div>';
+        console.error("GitHub listesi alınamadı:", error);
+        fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #cc0000;">Bağlantı Hatası! Arşiv listesi alınamadı.</div>';
     }
 }
 
@@ -1017,13 +1017,13 @@ function winPencerisiniKapat() {
 }
 
 function winDosyaSec(element, ad, downloadUrl) {
-    // Önceki seçili olanlarýn stilini temizle
+    // Önceki seçili olanların stilini temizle
     const items = document.getElementsByClassName("win-file-item");
     for(let i=0; i<items.length; i++) {
         items[i].classList.remove("selected");
     }
     
-    // Yeni elemaný seçili yap ve alttaki input çubuðuna adýný yaz
+    // Yeni elemanı seçili yap ve alttaki input çubuğuna adını yaz
     element.classList.add("selected");
     document.getElementById("winFileNameInput").value = ad + ".txt";
     secilenDosyaUrl = downloadUrl;
@@ -1050,7 +1050,7 @@ async function winSecilenDosyayiAc() {
             kaydir("input");
         }
     } catch (error) {
-        alert("Dosya içeriði GitHub'dan çekilirken hata oluþtu!");
+        alert("Dosya içeriği GitHub'dan çekilirken hata oluştu!");
     }
 }
 
@@ -1065,7 +1065,7 @@ document.getElementsByTagName("body")[0].onload = function(){
 			//toFindDuplicates(birebir,0)
 			//kuralKontrol(\"milletine\",\"milletyine\")
 			
-			// --- MODERN KLASÖR/ELEMENT DEÐÝÞÝM ÝZLEYÝCÝSÝ (MutationObserver) ---
+			// --- MODERN KLASÖR/ELEMENT DEĞİŞİM İZLEYİCİSİ (MutationObserver) ---
 			if (typeof yuklemeEkrani$ !== 'undefined' && yuklemeEkrani$.length >= 2) {
 				const izleyici1 = new MutationObserver(function(mutations) {
 					yuklemeEkrani$[0].style.display = "none";
