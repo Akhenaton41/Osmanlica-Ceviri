@@ -1,0 +1,1093 @@
+<html><head>
+<meta http-equiv="Content-Language" content="tr">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
+<title>Osmanlıca Çeviri</title>
+<link rel="stylesheet" type="text/css" href="css\font.css">
+<link rel="stylesheet" type="text/css" href="css\buton.css">
+
+<style>
+/* --- WINDOWS KLASİK DOSYA SEÇİM PENCERESİ STİLLERİ --- */
+.win-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+}
+
+.win-dialog {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    background-color: #d4d0c8; /* Klasik Windows Gri */
+    border-top: 2px solid #fff; border-left: 2px solid #fff;
+    border-right: 2px solid #808080; border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0 0 #000;
+    padding: 2px;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    color: #000;
+    /* Pencerenin genelinde de harf seçimini engelliyoruz */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.win-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0); /* Klasik Windows Degradesi */
+    color: #fff;
+    padding: 3px 4px 3px 6px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.win-title-text {
+    font-size: 12px;
+}
+
+.win-close-btn {
+    background-color: #d4d0c8;
+    border-top: 1px solid #fff; border-left: 1px solid #fff;
+    border-right: 1px solid #808080; border-bottom: 1px solid #808080;
+    width: 16px; height: 14px;
+    text-align: center;
+    line-height: 11px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+.win-close-btn:active {
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #fff; border-bottom: 1px solid #fff;
+    padding-top: 1px; padding-left: 1px;
+}
+
+.win-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 6px 4px;
+    gap: 5px;
+}
+
+.win-label {
+    margin-right: 2px;
+}
+
+.win-dropdown-mimic {
+    background: #fff;
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #fff; border-bottom: 1px solid #fff;
+    padding: 2px 4px;
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.win-file-view {
+    background-color: #fff;
+    border-top: 2px solid #808080; border-left: 2px solid #808080;
+    border-right: 2px solid #fff; border-bottom: 2px solid #fff;
+    height: 220px;
+    margin: 0 6px 6px 6px;
+    overflow-y: auto;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Dosyaları yan yana 3 sütun dizer */
+    grid-auto-rows: max-content;
+    gap: 4px;
+}
+
+.win-file-item {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    cursor: default; /* Mouse imlecini standart ok yapar, metin seçme çizgisi çıkmaz */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid transparent;
+    
+    /* DOSYA HARFLERİNİN SEÇİLMESİNİ ENGELLEYEN KRİTİK KODLAR */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.win-file-item:hover {
+    background-color: #e5e5e5;
+}
+
+.win-file-item.selected {
+    background-color: #000080;
+    color: #fff;
+    border: 1px dotted #fff;
+}
+
+.win-file-icon {
+    margin-right: 4px;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.win-bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px 8px 8px;
+}
+
+.win-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 380px;
+}
+
+.win-field-row {
+    display: flex;
+    align-items: center;
+}
+
+.win-field-row label {
+    width: 75px;
+}
+
+.win-input-text {
+    background: #fff;
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #fff; border-bottom: 1px solid #fff;
+    padding: 2px;
+    flex-grow: 1;
+    font-size: 11px;
+    height: 19px;
+}
+
+.win-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 80px;
+}
+
+.win-btn {
+    background-color: #d4d0c8;
+    border-top: 1px solid #fff; border-left: 1px solid #fff;
+    border-right: 1px solid #808080; border-bottom: 1px solid #808080;
+    padding: 4px;
+    text-align: center;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0.5px 0.5px 0 0 #000;
+}
+.win-btn:active {
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #fff; border-bottom: 1px solid #fff;
+    padding-top: 5px; padding-left: 5px;
+}
+</style>
+</head><body>
+
+
+
+
+<table id="tablo" border="0" width="100%" cellspacing="0" cellpadding="0">
+	<tr class="golgeli">
+		<td colspan="2" id="banner">
+		<h1>Osmanlıca Çeviri Aracı</h1><h2>Sürüm 6.0</h2>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><div class="copyright">&#169; Bu yazılımın bütün hakları 
+			<a href="mailto:lusiyen@hotmail.com" target="_blank">Mehmet Akif Ardıç</a> (Akhenaton)’a aittir. 
+			Bu yazılım, <b>tamamen ücretsizdir</b> ve indirilmiş bir içerik olarak 
+			kişisel bilgisayarlarda ve eğitim amaçlı kurumlarda kullanılabilir. İzinsiz hiçbir websitesine 
+			entegre edilemez.</div></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div id="ceviriInput" class="golgeli">
+			<div class="baslik">Osmanlıca metni ya da görsel urlsini aşağıdaki kutuya yapıştırın.</div>
+			<div id="input" contenteditable="true" class="arabic" onInput="save()">
+				&nbsp;</div>
+		</div></td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="butonAlani" id="butonAlani" colspan="2" align="center">
+			 
+			<a class="button" href="javascript:Cevir()"><span class="material-icons">loop</span> Çevir</a> 
+			<a class="button" href="javascript:winPencerisiniAc()"><span class="material-icons">library_books</span> Örnek Metinler</a>
+			<a class="button" href="javascript:yukle()"><span class="material-icons">folder_open</span> Dosyadan Yükle</a>
+			 
+			<a class="button" href="javascript:temizle()"><span class="material-icons">delete</span> Temizle</a> 
+			
+			
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" id="bosAlan"><input type="file" style="display:none" id="dosya" accept=".txt, .rtf">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="50%"><div id="ceviriTranskripsiyon" class="golgeli" onload="yuklemeEkrani$[0].style.display='none'">
+			<div class="baslik">Transkripsiyon</div>
+			<div id="cikti1" lang="tr"></div>
+			
+			<div class="yuklemeEkrani"><div class="lds-spinner">&nbsp;</div></div>
+
+			
+		</div></td>
+		<td><div id="ceviriSadelestirme" class="golgeli" onload="yuklemeEkrani$[1].style.display='none'">
+			<div class="baslik">Sadeleştirilmiş Metin</div>
+			<div id="cikti2" lang="tr"></div>
+			
+			<div class="yuklemeEkrani"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+			
+		</div></td>
+	</tr>
+	
+	<tr> 
+		<td colspan="2"><br><br><div class="golgeli"><div class="baslik">Veri Bankası İstatistikleri <div class="material-icons" onclick="gosterGizle(this)">add</div> </div><div id="cikti3"></div></div></td>
+	</tr>
+	
+	</table>
+
+<div id="gizliDiv"></div>
+
+
+<div id="winFileModal" class="win-modal-overlay">
+    <div class="win-dialog">
+        <div class="win-titlebar">
+            <span class="win-title-text">Dosya Gönder</span>
+            <div class="win-close-btn" onclick="winPencerisiniKapat()">×</div>
+        </div>
+        <div class="win-toolbar">
+            <span class="win-label">Bakılan yer:</span>
+            <div class="win-dropdown-mimic">
+                <span>örnek dosyalar</span>
+                <span style="font-size: 9px; color: #808080;">&#9660;</span>
+            </div>
+            <span class="material-icons" style="font-size:16px; color:#808080; margin-left:10px;">create_new_folder</span>
+            <span class="material-icons" style="font-size:16px; color:#808080;">view_list</span>
+        </div>
+        
+        <div id="winFileView" class="win-file-view">
+            <div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">
+                GitHub arşivi taranıyor...
+            </div>
+        </div>
+        
+        <div class="win-bottom-bar">
+            <div class="win-fields">
+                <div class="win-field-row">
+                    <label>Dosya adı:</label>
+                    <input type="text" id="winFileNameInput" class="win-input-text" readonly>
+                </div>
+                <div class="win-field-row" style="margin-top: 4px;">
+                    <label>Dosya türü:</label>
+                    <div class="win-input-text" style="background:#d4d0c8; color:#555;">Tüm desteklenen türler (*.txt)</div>
+                </div>
+            </div>
+            <div class="win-buttons">
+                <div class="win-btn" style="font-weight: bold;" onclick="winSecilenDosyayiAc()">Aç</div>
+                <div class="win-btn" onclick="winPencerisiniKapat()">İptal</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+var arabic = /[\u0600-\u06FF]/; Aktif1=false; Aktif2=false
+
+var harfler=new Array(" ne · &#65255;&#65258; ","8·[&#1783;&#1640;]","e·&#1749;","3·&#1635;","4·&#1636;","9·[&#1785;&#1641;]","i·&#65164;","la·&#65275;","y·&#1744;","i·&#1573;","in·&#1613;","t·&#1577;","â·&#1648;","Allâh·&#65010;","n·&#1611;","6·&#1638;","2·&#1634;","1·&#1633;","n·&#8204;&#1611;","j·&#1688;",";·&#1563;","?·&#1567;","·&#1616;","·&#1618;","·&#1614;","·&#1615;","ñ·&#1891;","0·[&#1776;&#1632;]","5·&#1637;","-i·&#1728;","2·&#1778;","3·&#1779;","1·&#1777;","ten·&#1577;&#1611;",";·&#1563;","ü·&#1572;","&#7829;·&#1584;",",·&#1644;","?·&#1567;",",·&#1548;","ñ·[&#1705;&#1709;]","p·&#1662;","n·&#1575;&#1611;","e·&#1571;","ç·&#1670;","i·[&#1569;&#1740;&#1574;]","ğ·&#1594;","&#380;·&#1590;","s&#817;·&#1579;","&#7789;·&#1591;","g·&#1711;","a·&#1570;","&#7779;·&#1589;","ş·&#1588;","&#7580;·&#1593;","e·&#1607;","z·&#1586;","&#7723;·&#1582;","i·&#1610;","d·&#1583;","&#7717;·&#1581;","æ·&#1575;","m·&#1605;","s·&#1587;","&#7731;·&#1602;","f·&#1601;","n·&#1606;","b·&#1576;","l·&#1604;","c·&#1580;","y·&#1609;","k·&#1603;","r·&#1585;","v·&#1608;","&#7827;·&#1592;","t·&#1578;")
+
+var yuklemeEkrani$=document.getElementsByClassName("yuklemeEkrani")
+
+
+function giris() {
+    harfler = uzundanKisaya(duzelt(harfler), 1);
+    kokler = uzundanKisaya(duzelt(kokler), 1);
+    birebir = uzundanKisaya(duzelt(birebir), 1);
+    birebirRutus = uzundanKisaya(duzelt(birebirRutus), 1);
+    gorunmezRutus = uzundanKisaya(duzelt(gorunmezRutus), 1);
+    sade = uzundanKisaya(duzelt(sade), 0);
+    sadeRutus = uzundanKisaya(duzelt(sadeRutus), 0);
+    sonSadeRutus = uzundanKisaya(duzelt(sonSadeRutus), 0);
+    aciklama = uzundanKisaya(duzelt(aciklama), 0);
+
+    id("dosya").addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        const fr = new FileReader();
+
+        fr.onload = () => {
+            let fileContent = fr.result;
+
+            let uzanti = (file.name).lastIndexOf(".");
+            uzanti = (file.name).substr(uzanti + 1);
+            uzanti = uzanti.toLowerCase();
+
+            if (uzanti === "rtf") {
+                fileContent = rtf(fileContent);
+            }
+
+            id("input").innerText = fileContent;
+            id("input").scrollTop = 0;
+            id("cikti1").innerHTML = "";
+            id("cikti2").innerHTML = "";
+
+            arabicControl();
+            save();
+
+            id('ceviriInput').scrollIntoView();
+        };
+
+        fr.readAsText(file);
+    });
+
+    id("input").addEventListener('paste', stillKaldir);
+
+    let x = document.cookie; 
+    if (x) {
+        x = x.substring(6);
+        if (x.length > 5) {
+            id("input").innerHTML = x;
+            arabicControl();
+        }
+    }
+
+    arabicControl();
+
+    if (birebir) {
+        //const uniq = birebir.map(n => ({ count: 1, name: n })).reduce((n, e) => (n[e.name] = (n[e.name] || 0) + e.count, n), {});
+        //const duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1);
+        //alert(duplicates.length + " - " + duplicates);
+    }
+
+    istatistikGetir();
+
+    //document.getElementsByTagName("body")[0].scrollIntoView();
+}
+
+function id(e){return document.getElementById(e)}
+
+function temizle(){
+	id("input").innerHTML=""
+	id("input").style.direction="rtl"
+	id("cikti1").innerHTML=""
+	id("cikti2").innerHTML=""
+	id("input").scrollIntoView()
+	save()
+	}
+
+function arabicControl() {
+    const m = id("input").innerHTML;
+
+    if (arabic.test(m)) {
+        id("input").style.direction = "rtl";
+    } else {
+        id("input").style.direction = "ltr";
+    }
+
+    if (id("input").style.direction === "rtl") {
+        id("input").style.textAlign = "right";
+    } else {
+        id("input").style.textAlign = "left";
+    }
+}
+
+
+function yukle(){
+	id("dosya").click()
+	
+	}
+
+function cevir() {
+    id("gizliDiv").innerHTML = id("input").innerHTML;
+    let m = id("gizliDiv").innerHTML.trim();
+
+    if (m.toLowerCase().startsWith("http")) {
+        ocrGetir(m);
+        return;
+    }
+
+    m = FazlaBosluklariSil(m);
+
+    for (let i = 0; i < harfler.length; i++) {
+        let [harf0, harf1] = harfler[i].split("·");
+        let pattern = new RegExp(harf1, "g");
+        m = m.replace(pattern, harf0);
+    }
+
+    for (let i = 0; i < kokler.length; i++) {
+        let [kok0, kok1] = kokler[i].split("·");
+        let pattern = new RegExp(kok1, "g");
+        m = m.replace(pattern, kok0);
+    }
+
+    let kontrolSayisi = 4;
+    let t = m;
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        t = transkripsiyon(t);
+    }
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        t = SonRutus(t);
+    }
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        t = BitisRutusu(t);
+    }
+
+    let s = t;
+
+    if (premium) {
+        t = t.replace(/ğ/g, "\u0121").replace(/û/g, "\u016B").replace(/â/g, "\u0101").replace(/\'/g, "’");
+    }
+
+    duzelt2(t);
+
+    for (let i = 0; i <= kontrolSayisi; i++) {
+        s = sadelestir(s);
+    }
+    for (let i = 0; i <= kontrolSayisi; i++) {
+        s = sadelestirRutus(s);
+    }
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        s = BitisRutusu2(s);
+    }
+
+    t = aciklamaEkle(t);
+    s = aciklamaEkle(s);
+
+    id("cikti1").innerHTML = paragrafaCevir(t);
+    id("cikti2").innerHTML = paragrafaCevir(s);
+
+    idle(id("cikti1"), "tr");
+    idle(id("cikti2"), "sd");
+
+    miladiTakvim();
+
+    if (premium) {
+        id("cikti1").scrollTop = 0;
+        id("cikti2").scrollTop = 0;
+    }
+
+    id("cikti1").scrollIntoView();
+}
+
+function paragrafaCevir(e){
+	e=e.replace(/[\n\r]/g,"").replace(/	/g,"")
+	e=e.replace(/\<br\>\<br\>/g,"</p><p>")
+	e= "<p>"+e+"</p>"
+	//e=e.replace(/\s+/g, '')
+	e=e.replace(/\>[ ]/g,">")
+	e=e.replace(/\>[!\.,:]/g,">")
+	e=e.replace(/\&nbsp;/g, '')
+	
+	if(premium){
+		e=e.replace(/>\u1d9c(.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/>— (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/\: — (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/> (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/>«(.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/<p>(.)/g,function(v){return "<p>"+v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/[\.!?] (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		
+		e=e.replace(/<\/abbr>(.)/g,function(v){return v.toLocaleLowerCase('tr-TR')} )
+		e=e.replace(/<\/abbr> (.)/g,function(v){return v.toLocaleLowerCase('tr-TR')} )
+		
+		e=e.replace(/<br>(.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		}
+	
+	
+	e=e.replace(/\<br>[.] /g,"<br>")
+	
+	e=e.replace(/>[sS]n/g,">Sen ")
+	
+	e=e.replace(/<p><br>/g,"<p>") // fazla br taglarını sil
+	
+	if(!premium){e=e.replace(/\u0121/g,"ğ")}
+	
+	return e
+	}
+
+function SonRutus(e){
+	for (i=0; i<=birebirRutus.length-1; i++){
+		bire=birebirRutus[i].split("·")
+		eval("pattern=/"+bire[1]+"/g")
+		e=e.replace(pattern,bire[0])
+		}
+	return e
+	}
+
+function BitisRutusu(e) {
+    for (let i = 0; i < gorunmezRutus.length; i++) {
+        let bire = gorunmezRutus[i].split("·");
+        let pattern = new RegExp(bire[1], "g");
+        e = e.replace(pattern, bire[0]);
+    }
+
+    return e;
+}
+
+
+function BitisRutusu2(e) {
+    e = e.replace(new RegExp(String.fromCharCode(10), 'g'), '');
+
+    for (let i = 0; i < sonSadeRutus.length; i++) {
+        let bire = sonSadeRutus[i].split("·");
+        let pattern = new RegExp(bire[0], "g");
+        e = e.replace(pattern, bire[1]);
+    }
+
+    return e;
+}
+
+
+function sadelestirRutus(e) {
+    for (let j = 0; j < sadeRutus.length; j++) {
+        let bire = sadeRutus[j].split("·");
+        let pattern = new RegExp(bire[0], "g");
+        e = e.replace(pattern, bire[1]);
+    }
+
+    if (premium) {
+        e = e.replace(/â/g, "a")
+            .replace(/û/g, "u")
+            .replace(/î/g, "i");
+    }
+
+    return e;
+}
+
+function transkripsiyon(e) {
+    for (let i = 0; i < birebir.length; i++) {
+        let bire = birebir[i].split("·");
+        let pattern = new RegExp(" " + bire[1] + " ", "g");
+        e = e.replace(pattern, " " + bire[0] + " ");
+    }
+
+    for (let i = 0; i < birebir.length; i++) {
+        let bire = birebir[i].split("·");
+        let pattern = new RegExp(bire[1], "g");
+        e = e.replace(pattern, bire[0]);
+    }
+
+    e = e.replace(/e k /g, "eñ ")
+        .replace(/e ie /g, "eye ")
+        .replace(/a cğk/g, "acağıñ")
+        .replace(/e dn /g, "eden ")
+        .replace(/âliny /g, "âlini ")
+        .replace(/a(n)lr /g, "a$1lar ")
+        .replace(/âly /g, "âli ")
+        .replace(/ily /g, "ili ")
+        .replace(/([eiî])(.)lmş/g, "$1$2ilmiş")
+        .replace(/([âaı])lmş/g, "$1lmış")
+        .replace(/([ouû])lmş/g, "$1lmuş")
+        .replace(/([öü])lmş/g, "$1lmüş")
+        .replace(/([eiî])tk /g, "$1tiñ ")
+        .replace(/([eiî]) sy /g, "$1si ")
+        .replace(/([eiî])([\u1e6d])dn /g, "$1$2den ")
+        .replace(/([eiî])lrk /g, "$1leriñ ")
+        .replace(/lerile /g, "leriyle ")
+        .replace(/([aâeiî])link /g, "$1linin ")
+        .replace(/ ([\.,? !;:])/g, "$1")
+        .replace(/\: \- /g, ": — ");
+
+    return e;
+}
+
+
+function sadelestir(e) {
+    e = e.replace(/[\u1d9c]/g, "")
+        .replace(/\u0121/g, "ğ")
+        .replace(/\u016B/g, "û")
+        .replace(/\u0101/g, "â")
+        .replace(/’/g, "'")
+        .replace(/\u1E62/g, "S")
+        .replace(/\u00f1/g, "n")
+        .replace(/\u1e2a/g, "H")
+        .replace(/\u1e33/g, "k")
+        .replace(/[\u1e93\u017c\u1e95]/g, "z")
+        .replace(/[\u1e25\u1e2b]/g, "h")
+        .replace(/\u00ea/g, "e")
+        .replace(/\u0331/g, "")
+        .replace(/\u1e6d/g, "t")
+        .replace(/\u1e63/g, "s")
+        .replace(/\u1e32/g, "K")
+        .replace(/\u1e24/g, "H")
+        .replace(new RegExp(String.fromCharCode(8204), 'g'), "");
+
+    for (let k = 0; k < sade.length; k++) {
+        let kelime = sade[k].split("·");
+        e = e.replace(new RegExp(" " + kelime[0] + " ", "g"), " " + kelime[1] + " ");
+    }
+
+    for (let k = 0; k < sade.length; k++) {
+        let kelime = sade[k].split("·");
+        e = e.replace(new RegExp(kelime[0], "g"), kelime[1]);
+    }
+
+    return e;
+}
+
+
+function duzelt2(e){id("gizliDiv").innerHTML=e;e=id("gizliDiv").innerHTML}
+
+function duzelt(e){
+	for (i=0;i<=e.length-1;i++){
+		
+		id("gizliDiv").innerHTML=e[i]
+		e[i]=id("gizliDiv").innerHTML		
+		}
+	
+	return e
+	}
+
+function idle(p, ID) {
+    let ps = p.getElementsByTagName("p");
+    
+    let metin = false;
+    let idNo = 0;
+    
+    for (let i = 0; i <= ps.length - 1; i++) {
+        if (ps[i].innerText.length > 0) {
+            if (!metin) {
+                metin = true;
+                if (ps[i].innerText.length < 128 && ps.length > 2) {
+                    if (premium) {
+                        ps[i].style.textTransform = "uppercase";
+                    }
+                    ps[i].style.fontWeight = "bold";
+                }
+            }
+            ps[i].setAttribute("id", ID + idNo);
+            ps[i].onclick = function() {
+                aktif(this.id);
+            };
+            idNo++;
+        }
+    }
+}
+
+
+function aktif(ID) {
+    let oth = ID.indexOf("tr") === 0 ? "tr" : "sd";
+    let other = oth === "tr" ? "sd" : "tr";
+    
+    if (id(ID) === Aktif2) {
+        return;
+    }
+    
+    let sayi = ID.replace(/\D/g, '');
+    
+    if (Aktif1) {
+        Aktif1.className = "";
+    }
+    if (Aktif2) {
+        Aktif2.className = "";
+    }
+    
+    id(other + sayi).className = "Aktif1";
+    id(oth + sayi).className = "Aktif2";
+    
+    Aktif1 = id(other + sayi);
+    Aktif2 = id(oth + sayi);
+    kaydir(other + sayi);
+}
+
+	
+function save(){
+	text=id("input").innerHTML
+	document.cookie="input="+null
+	document.cookie="input="+text
+	}
+
+function uzundanKisaya(e,ee){
+
+	e.sort(function(a,b){
+		try {
+			a=a.split("·")[ee].length
+			b=b.split("·")[ee].length
+			}catch(err) {}
+		return a<b
+		})
+	
+	// yinelenen verileri sil
+	var seen = {};
+    return e.filter(function(item) {
+        return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+    });
+	
+	// ascii(8204) karakterlerini temizle
+	if(ee==0){
+		for(i=0;i<=e.length-1;i++){
+			e[i]=e[i].replace(new RegExp(String.fromCharCode(8204), 'g'), "")
+			}
+		}
+	
+	return e
+	}
+
+// bir kelimeyi değiştiren kuralı bulur
+function kuralKontrol(a1,a2){
+	
+	id("gizliDiv").innerHTML=" "+a1+" "
+	a1=id("gizliDiv").innerHTML
+	id("gizliDiv").innerHTML=" "+a2+" "
+	a2=id("gizliDiv").innerHTML
+	
+	a$=""
+	
+	for(i=0;i<birebir.length-1;i++){
+		deg=birebir[i].split("·")
+		eval("pattern=/"+deg[1]+"/g")
+		
+		if(a1.replace(pattern,deg[0])!=a1){
+			alert(a2+" = "+birebir[i]);
+			//break
+			}
+		}
+	
+	for(i=0; i<birebirRutus.length-1; i++){
+		deg=birebirRutus[i].split("·")
+		eval("pattern=/"+deg[1]+"/g")
+		
+		if(a1.replace(pattern,deg[0])!=a1){
+			alert(a2+" = "+birebirRutus[i]);
+			//break
+			}
+		}
+
+
+	for(i=0;i<sade.length-1;i++){
+		deg=sade[i].split("·")
+		eval("pattern=/"+deg[0]+"/g")
+		
+		if(a1.replace(pattern,deg[1])!=a1){
+			alert(a2+" = "+sade[i]);
+			//break
+			}
+		}
+	
+	for(i=0;i<sade.length-1;i++){
+		deg=sade[i].split("·")
+		eval("pattern=/"+deg[0]+"/g")
+		
+		if(a1.replace(pattern,deg[1])!=a1){
+			alert(a2+" = "+sade[i]);
+			//break
+			}
+		}
+	}
+
+function istatistikGetir(){
+	a$="Transkripsiyonel Karakter Sayısı: <b>"+harfler.length+"</b><br>"
+	a$+="Osmanlıca Kural ve Kelime Sayısı: <b>"+birebir.length+"</b><br>"
+	a$+="Osmanlıca Rütuş Kural Sayısı: <b>"+(birebirRutus.length+gorunmezRutus.length)+"</b><br>"
+	a$+="Sadeleştirme Kural ve Kelime Sayısı: <b>"+sade.length+"</b><br>"
+	a$+="Sadeleştirme Rütuş Kural Sayısı: <b>"+(sadeRutus.length+sonSadeRutus.length)+"</b>"
+	id("cikti3").innerHTML=a$
+	}
+
+function gosterGizle(e){
+	div=e.parentNode.parentNode.getElementsByTagName("div")[2]
+	
+	if(e.innerHTML=="add"){
+		div.style.display="block"
+		e.innerHTML="remove"
+	}else{
+		div.style.display="none"
+		e.innerHTML="add"
+		}
+	
+	kaydir(div.id);
+	}
+
+function FazlaBosluklariSil(e){
+	
+	// Şeddeleri Sil	
+	e=e.replace(/(.)\u0651/g,"$1")
+	//e=e.replace(new RegExp('\r?\n','g'), '');
+	
+	// Ön Rutuş
+	e=e.trim().replace(/(\r|\n)/g,"")
+	e=e.replace(/\s{2,}/g, " ")
+	
+	// &nbsp;	
+	e=e.replace(" "+c$," ")
+
+	// noktaları düzenle
+	e=e.replace(/[\.]{3}/g,".")
+	
+	
+	// Ön Boşlukları Sil
+	e=e.replace(/<br> /g,"<br>")
+		
+	// Son Rütuş
+	e=e.trim().replace(/(\r|\n)/g,"")
+	
+	e=e.replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ")
+	return e
+	}
+
+function ocrGetir(e){
+	id("input").innerText="Resim dosyasındaki Osmanlıca metin çözümleniyor..."
+	id("cikti1").HTML=""
+	id("cikti2").HTML=""
+	
+	Tesseract.recognize(
+    e, 'ara'
+  ).then(result => {
+    id("input").innerHTML = result.data.text;
+    save();
+    kaydir("input");
+    cevir()
+    
+  }).catch(err => {
+    id("input").innerHTML  = 'Resim dosyası çözülemedi!';
+    kaydir("input");
+    return;
+  });
+
+	}
+
+function stillKaldir(e){
+	
+	var clipboardData, pastedData;
+	
+	e.stopPropagation();
+	e.preventDefault();
+	
+	clipboardData = e.clipboardData || window.clipboardData;
+	pastedData = clipboardData.getData('Text');
+	
+	id("input").innerHTML=(pastedData.replace(/\n/g,"<br>"))
+	
+	arabic = /[\u0600-\u06FF]/;
+	
+	if(pastedData.indexOf("http")==0){
+		id("input").style.textAlign="center";
+		id("input").style.direction="ltr";
+	}else if(arabic.test(pastedData) ){
+		id("input").style.textAlign="right";
+		id("input").style.direction="rtl";
+	}else{
+		id("input").style.textAlign="left"
+		id("input").style.direction="ltr";
+		}
+	
+
+	}
+
+function rtf(e){
+	
+	alert(e)
+	
+	return e
+	}
+
+function aciklamaEkle(e){
+	
+	for(i=0; i<=aciklama.length-1;i++){
+		a$=aciklama[i].split("·")
+		
+		a$[1]=a$[1].replace(/<br>/g,"&#013;")		
+			
+		e=e.replace(a$[0]," <abbr title=\""+a$[1]+"\">"+a$[0]+"</abbr> ")
+		}
+	
+	return e
+	}
+
+function miladiTakvim(){
+	// Hazırlanmamış modül
+	p=id("cikti2").getElementsByTagName("p")
+	//alert(p.length)
+	}
+
+function scriptYukle(t,e){var i=document.getElementsByTagName("head").item(0),a=document.createElement("script");a.setAttribute("type","text/javascript"),a.setAttribute("id",e),a.setAttribute("src","javascript/"+t),i.appendChild(a); id('input').scrollIntoView()}
+
+function toFindDuplicates(arry,e4) {
+	
+	//alert(arry.length)
+	abort = false
+	
+	for(i=0;i<=arry.length-10 && !abort;i++){
+		a1=arry[i].split("·")[e4]
+		
+		for(j=0;j<=arry.length-10 && !abort;j++){
+			a2=arry[j].split("·")[e4]
+			
+			if(i!=j && a1==a2){
+			//if(i!=j && arry[i]==arry[j]){
+				alert(a1)
+				abort = true;
+				}
+			
+			//alert("Bitti!")
+			}
+		
+		}
+	}
+
+function Cevir(){
+	loadingScreenOn()
+	
+	document.getElementById('butonAlani').scrollIntoView()
+	
+	//kaydir("butonAlani");
+	setTimeout(cevir, 1000)
+	}
+
+async function loadingScreenOn(){	
+	yuklemeEkrani$[0].style.display="block"
+	yuklemeEkrani$[1].style.display="block"
+	}
+
+async function loadingScreenOff(){
+	//yuklemeEkrani$[0].style.display="none"
+	//yuklemeEkrani$[1].style.display="none"
+	}
+
+function kaydir(hedefId) {
+    if (id(hedefId)) {
+        id(hedefId).scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+}
+
+
+// --- RETRO WINDOWS DOSYA SEÇİCİ JAVASCRIPT MODÜLLERİ ---
+const GH_KULLANICI = "Akhenaton41";
+const GH_REPO = "Osmanlica-Ceviri";
+const GH_KLASOR = "örnek dosyalar";
+let secilenDosyaUrl = "";
+
+async function githubKlasorunuPencereyeYukle() {
+    const fileView = document.getElementById("winFileView");
+    const apiURL = `https://api.github.com/repos/${GH_KULLANICI}/${GH_REPO}/contents/${encodeURIComponent(GH_KLASOR)}`;
+    
+    try {
+        const response = await fetch(apiURL);
+        if (!response.ok) throw new Error("Depoya ulaşılamadı");
+        
+        const dosyalar = await response.json();
+        let dosyaElemanlari = "";
+        let txtVarMi = false;
+        
+        dosyalar.forEach(dosya => {
+            if (dosya.name.toLowerCase().endsWith('.txt')) {
+                let temizAd = dosya.name.replace(/\.[^/.]+$/, "");
+                // Dosyaları klasik Windows ikon yapısı gibi listeliyoruz (&#128196;)
+                dosyaElemanlari += `
+                    <div class="win-file-item" onclick="winDosyaSec(this, '${temizAd}', '${dosya.download_url}')">
+                        <span class="win-file-icon">&#128196;</span>
+                        <span>${temizAd}</span>
+                    </div>`;
+                txtVarMi = true;
+            }
+        });
+        
+        if (txtVarMi) {
+            fileView.innerHTML = dosyaElemanlari;
+        } else {
+            fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">Klasörde metin dosyası bulunamadı.</div>';
+        }
+    } catch (error) {
+        console.error("GitHub listesi alınamadı:", error);
+        fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #cc0000;">Bağlantı Hatası! Arşiv listesi alınamadı.</div>';
+    }
+}
+
+function winPencerisiniAc() {
+    document.getElementById("winFileModal").style.display = "block";
+    document.getElementById("winFileNameInput").value = "";
+    secilenDosyaUrl = "";
+    githubKlasorunuPencereyeYukle();
+}
+
+function winPencerisiniKapat() {
+    document.getElementById("winFileModal").style.display = "none";
+}
+
+function winDosyaSec(element, ad, downloadUrl) {
+    // Önceki seçili olanların stilini temizle
+    const items = document.getElementsByClassName("win-file-item");
+    for(let i=0; i<items.length; i++) {
+        items[i].classList.remove("selected");
+    }
+    
+    // Yeni elemanı seçili yap ve alttaki input çubuğuna adını yaz
+    element.classList.add("selected");
+    document.getElementById("winFileNameInput").value = ad + ".txt";
+    secilenDosyaUrl = downloadUrl;
+}
+
+async function winSecilenDosyayiAc() {
+    if (!secilenDosyaUrl) {
+        alert("Lütfen&#21015;&#34920;den bir dosya seçin!");
+        return;
+    }
+    
+    winPencerisiniKapat();
+    
+    try {
+        const response = await fetch(secilenDosyaUrl);
+        const orijinalMetin = await response.text();
+        const girdiAlani = document.getElementById("input");
+        
+        if (girdiAlani) {
+            girdiAlani.innerText = orijinalMetin;
+            arabicControl();
+            save();
+            Cevir(); // Metni yükledikten sonra otomatik çeviriyi tetikler
+            kaydir("input");
+        }
+    } catch (error) {
+        alert("Dosya içeriği GitHub'dan çekilirken hata oluştu!");
+    }
+}
+
+
+document.getElementsByTagName("body")[0].onload = function(){
+	scriptYukle("jquery.min.js","sc3")
+	scriptYukle("kelimeler.js","sc1")
+	id("sc1").onload=function(){
+		scriptYukle("ocr.js","sc2")
+		id("sc2").onload=function(){
+			giris();				
+			//toFindDuplicates(birebir,0)
+			//kuralKontrol(\"milletine\",\"milletyine\")
+			
+			// --- MODERN KLASÖR/ELEMENT DEĞİŞİM İZLEYİCİSİ (MutationObserver) ---
+			if (typeof yuklemeEkrani$ !== 'undefined' && yuklemeEkrani$.length >= 2) {
+				const izleyici1 = new MutationObserver(function(mutations) {
+					yuklemeEkrani$[0].style.display = "none";
+				});
+				
+				const izleyici2 = new MutationObserver(function(mutations) {
+					yuklemeEkrani$[1].style.display = "none";
+				});
+				
+				const hedefCikti1 = document.getElementById("cikti1");
+				const hedefCikti2 = document.getElementById("cikti2");
+				
+				const izlemeAyarlari = { childList: true, subtree: true };
+				
+				if(hedefCikti1) izleyici1.observe(hedefCikti1, izlemeAyarlari);
+				if(hedefCikti2) izleyici2.observe(hedefCikti2, izlemeAyarlari);
+			}
+			
+			if(!premium){Cevir()}
+		}
+	}
+}
+
+
+</script></body></html>
