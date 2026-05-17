@@ -4,7 +4,7 @@ Bu proje, Osmanlıca metinlerin transkripsiyonel çevirisini yapan ve aynı zama
 
 ## 🚀 Canlı Önizleme
 Proje GitHub Pages üzerinde aktiftir. Doğrudan şu adresten deneyebilirsiniz:
-👉 [https://akhenaton41.github.io/Osmanlica-Ceviri/](https://akhenaton41.github.io/Osmanlica-Ceviri/)
+👉 <a href="https://akhenaton41.github.io/Osmanlica-Ceviri/" target="_blank">Osmanlıca Çeviri Aracı Canlı Önizleme</a>
 
 ## 🛠️ Öne Çıkan Özellikler
 - **Çift Yönlü Çıktı Dünyası:** Girilen Osmanlıca metni eş zamanlı olarak hem transkripsiyon alfabesine çevirir hem de günümüz Türkçesiyle sadeleştirir.
