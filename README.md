@@ -4,11 +4,11 @@ Bu proje, Osmanlıca metinlerin transkripsiyonel çevirisini yapan ve aynı zama
 
 ## 🚀 Canlı Önizleme
 Proje GitHub Pages üzerinde aktiftir. Doğrudan şu adresten deneyebilirsiniz:
-👉 [https://akhenaton41.github.io/Osmanlica-Ceviri/osmanlica.htm](https://akhenaton41.github.io/Osmanlica-Ceviri/osmanlica.htm)
+👉 [https://akhenaton41.github.io/Osmanlica-Ceviri/](https://akhenaton41.github.io/Osmanlica-Ceviri/)
 
 ## 🛠️ Öne Çıkan Özellikler
 - **Çift Yönlü Çıktı Dünyası:** Girilen Osmanlıca metni eş zamanlı olarak hem transkripsiyon alfabesine çevirir hem de günümüz Türkçesiyle sadeleştirir.
-- **Akıllı Dosya Okuma Mimarisi:** "Örnek Metinler" ve "Dosyadan Yükle" modülleri, yerel dosya sistemindeki veya depodaki `.txt` ve `.rtf` dosyalarını tarayıcının `FileReader` yetenekleriyle tamamen yerelde okur. Bu sayede hiçbir internet veya güvenlik engeline takılmaz.
+- **Akıllı Dosya Okuma Mimarisi:** "Örnek Metinler" ve "Dosyadan Yükle" modülleri, GitHub reponuzdaki veya yerel dosya sisteminizdeki `.txt` ve `.rtf` dosyalarını tarayıcının `FileReader` yetenekleriyle tamamen yerelde okur. Bu sayede hiçbir internet veya güvenlik engeline takılmaz.
 - **Canlı Durum İzleme (MutationObserver):** Çeviri çıktılarının yüklendiği alanlar modern DOM izleyicileriyle takip edilir; veri akışı tamamlandığı an yükleme ekranları otomatik olarak gizlenir.
 - **Gelişmiş İstatistik Paneli:** Veri bankasındaki transkripsiyonel karakter, Osmanlıca kural, kelime ve rütuş kurallarının sayısını anlık olarak listeler.
 
@@ -23,4 +23,4 @@ Osmanlica-Ceviri/
 │   ├── kelimeler.js      # Kelime veri bankası ve kural dizileri
 │   └── ocr.js            # Görselden metin çözümleme modülü
 ├── örnek dosyalar/       # Test edebileceğiniz hazır Osmanlıca metin arşivleri (.txt)
-└── osmanlica.htm         # Projenin ana giriş ve motor dosyası
+└── index.htm             # Projenin ana giriş ve motor dosyası
