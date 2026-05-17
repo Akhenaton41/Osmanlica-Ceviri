@@ -1,12 +1,12 @@
 <html><head>
 <meta http-equiv="Content-Language" content="tr">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
-<title>Osmanlıca Çeviri</title>
+<title>OsmanlÃ½ca Ã‡eviri</title>
 <link rel="stylesheet" type="text/css" href="css\font.css">
 <link rel="stylesheet" type="text/css" href="css\buton.css">
 
 <style>
-/* --- WINDOWS KLASİK DOSYA SEÇİM PENCERESİ STİLLERİ --- */
+/* --- WINDOWS KLASÃK DOSYA SEÃ‡ÃM PENCERESÃ STÃLLERÃ --- */
 .win-modal-overlay {
     display: none;
     position: fixed;
@@ -28,7 +28,7 @@
     font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
     font-size: 11px;
     color: #000;
-    /* Pencerenin genelinde de harf seçimini engelliyoruz */
+    /* Pencerenin genelinde de harf seÃ§imini engelliyoruz */
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -97,7 +97,7 @@
     overflow-y: auto;
     padding: 4px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Dosyaları yan yana 3 sütun dizer */
+    grid-template-columns: repeat(3, 1fr); /* DosyalarÃ½ yan yana 3 sÃ¼tun dizer */
     grid-auto-rows: max-content;
     gap: 4px;
 }
@@ -106,13 +106,13 @@
     display: flex;
     align-items: center;
     padding: 2px;
-    cursor: default; /* Mouse imlecini standart ok yapar, metin seçme çizgisi çıkmaz */
+    cursor: default; /* Mouse imlecini standart ok yapar, metin seÃ§me Ã§izgisi Ã§Ã½kmaz */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     border: 1px solid transparent;
     
-    /* DOSYA HARFLERİNİN SEÇİLMESİNİ ENGELLEYEN KRİTİK KODLAR */
+    /* DOSYA HARFLERÃNÃN SEÃ‡ÃLMESÃNÃ ENGELLEYEN KRÃTÃK KODLAR */
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -198,19 +198,19 @@
 <table id="tablo" border="0" width="100%" cellspacing="0" cellpadding="0">
 	<tr class="golgeli">
 		<td colspan="2" id="banner">
-		<h1>Osmanlıca Çeviri Aracı</h1><h2>Sürüm 6.0</h2>
+		<h1>OsmanlÃ½ca Ã‡eviri AracÃ½</h1><h2>SÃ¼rÃ¼m 6.0</h2>
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2"><div class="copyright">&#169; Bu yazılımın bütün hakları 
-			<a href="mailto:lusiyen@hotmail.com" target="_blank">Mehmet Akif Ardıç</a> (Akhenaton)’a aittir. 
-			Bu yazılım, <b>tamamen ücretsizdir</b> ve indirilmiş bir içerik olarak 
-			kişisel bilgisayarlarda ve eğitim amaçlı kurumlarda kullanılabilir. İzinsiz hiçbir websitesine 
+		<td colspan="2"><div class="copyright">&#169; Bu yazÃ½lÃ½mÃ½n bÃ¼tÃ¼n haklarÃ½ 
+			<a href="mailto:lusiyen@hotmail.com" target="_blank">Mehmet Akif ArdÃ½Ã§</a> (Akhenaton)â€™a aittir. 
+			Bu yazÃ½lÃ½m, <b>tamamen Ã¼cretsizdir</b> ve indirilmiÃ¾ bir iÃ§erik olarak 
+			kiÃ¾isel bilgisayarlarda ve eÃ°itim amaÃ§lÃ½ kurumlarda kullanÃ½labilir. Ãzinsiz hiÃ§bir websitesine 
 			entegre edilemez.</div></td>
 	</tr>
 	<tr>
 		<td colspan="2"><div id="ceviriInput" class="golgeli">
-			<div class="baslik">Osmanlıca metni ya da görsel urlsini aşağıdaki kutuya yapıştırın.</div>
+			<div class="baslik">OsmanlÃ½ca metni ya da gÃ¶rsel urlsini aÃ¾aÃ°Ã½daki kutuya yapÃ½Ã¾tÃ½rÃ½n.</div>
 			<div id="input" contenteditable="true" class="arabic" onInput="save()">
 				&nbsp;</div>
 		</div></td>
@@ -221,9 +221,9 @@
 	<tr>
 		<td class="butonAlani" id="butonAlani" colspan="2" align="center">
 			 
-			<a class="button" href="javascript:Cevir()"><span class="material-icons">loop</span> Çevir</a> 
-			<a class="button" href="javascript:winPencerisiniAc()"><span class="material-icons">library_books</span> Örnek Metinler</a>
-			<a class="button" href="javascript:yukle()"><span class="material-icons">folder_open</span> Dosyadan Yükle</a>
+			<a class="button" href="javascript:Cevir()"><span class="material-icons">loop</span> Ã‡evir</a> 
+			<a class="button" href="javascript:winPencerisiniAc()"><span class="material-icons">library_books</span> Ã–rnek Metinler</a>
+			<a class="button" href="javascript:yukle()"><span class="material-icons">folder_open</span> Dosyadan YÃ¼kle</a>
 			 
 			<a class="button" href="javascript:temizle()"><span class="material-icons">delete</span> Temizle</a> 
 			
@@ -243,7 +243,7 @@
 			
 		</div></td>
 		<td><div id="ceviriSadelestirme" class="golgeli" onload="yuklemeEkrani$[1].style.display='none'">
-			<div class="baslik">Sadeleştirilmiş Metin</div>
+			<div class="baslik">SadeleÃ¾tirilmiÃ¾ Metin</div>
 			<div id="cikti2" lang="tr"></div>
 			
 			<div class="yuklemeEkrani"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
@@ -252,7 +252,7 @@
 	</tr>
 	
 	<tr> 
-		<td colspan="2"><br><br><div class="golgeli"><div class="baslik">Veri Bankası İstatistikleri <div class="material-icons" onclick="gosterGizle(this)">add</div> </div><div id="cikti3"></div></div></td>
+		<td colspan="2"><br><br><div class="golgeli"><div class="baslik">Veri BankasÃ½ Ãstatistikleri <div class="material-icons" onclick="gosterGizle(this)">add</div> </div><div id="cikti3"></div></div></td>
 	</tr>
 	
 	</table>
@@ -263,13 +263,13 @@
 <div id="winFileModal" class="win-modal-overlay">
     <div class="win-dialog">
         <div class="win-titlebar">
-            <span class="win-title-text">Dosya Gönder</span>
-            <div class="win-close-btn" onclick="winPencerisiniKapat()">×</div>
+            <span class="win-title-text">Dosya GÃ¶nder</span>
+            <div class="win-close-btn" onclick="winPencerisiniKapat()">Ã—</div>
         </div>
         <div class="win-toolbar">
-            <span class="win-label">Bakılan yer:</span>
+            <span class="win-label">BakÃ½lan yer:</span>
             <div class="win-dropdown-mimic">
-                <span>örnek dosyalar</span>
+                <span>Ã¶rnek dosyalar</span>
                 <span style="font-size: 9px; color: #808080;">&#9660;</span>
             </div>
             <span class="material-icons" style="font-size:16px; color:#808080; margin-left:10px;">create_new_folder</span>
@@ -278,24 +278,24 @@
         
         <div id="winFileView" class="win-file-view">
             <div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">
-                GitHub arşivi taranıyor...
+                GitHub arÃ¾ivi taranÃ½yor...
             </div>
         </div>
         
         <div class="win-bottom-bar">
             <div class="win-fields">
                 <div class="win-field-row">
-                    <label>Dosya adı:</label>
+                    <label>Dosya adÃ½:</label>
                     <input type="text" id="winFileNameInput" class="win-input-text" readonly>
                 </div>
                 <div class="win-field-row" style="margin-top: 4px;">
-                    <label>Dosya türü:</label>
-                    <div class="win-input-text" style="background:#d4d0c8; color:#555;">Tüm desteklenen türler (*.txt)</div>
+                    <label>Dosya tÃ¼rÃ¼:</label>
+                    <div class="win-input-text" style="background:#d4d0c8; color:#555;">TÃ¼m desteklenen tÃ¼rler (*.txt)</div>
                 </div>
             </div>
             <div class="win-buttons">
-                <div class="win-btn" style="font-weight: bold;" onclick="winSecilenDosyayiAc()">Aç</div>
-                <div class="win-btn" onclick="winPencerisiniKapat()">İptal</div>
+                <div class="win-btn" style="font-weight: bold;" onclick="winSecilenDosyayiAc()">AÃ§</div>
+                <div class="win-btn" onclick="winPencerisiniKapat()">Ãptal</div>
             </div>
         </div>
     </div>
@@ -307,7 +307,7 @@
 <script>
 var arabic = /[\u0600-\u06FF]/; Aktif1=false; Aktif2=false
 
-var harfler=new Array(" ne · &#65255;&#65258; ","8·[&#1783;&#1640;]","e·&#1749;","3·&#1635;","4·&#1636;","9·[&#1785;&#1641;]","i·&#65164;","la·&#65275;","y·&#1744;","i·&#1573;","in·&#1613;","t·&#1577;","â·&#1648;","Allâh·&#65010;","n·&#1611;","6·&#1638;","2·&#1634;","1·&#1633;","n·&#8204;&#1611;","j·&#1688;",";·&#1563;","?·&#1567;","·&#1616;","·&#1618;","·&#1614;","·&#1615;","ñ·&#1891;","0·[&#1776;&#1632;]","5·&#1637;","-i·&#1728;","2·&#1778;","3·&#1779;","1·&#1777;","ten·&#1577;&#1611;",";·&#1563;","ü·&#1572;","&#7829;·&#1584;",",·&#1644;","?·&#1567;",",·&#1548;","ñ·[&#1705;&#1709;]","p·&#1662;","n·&#1575;&#1611;","e·&#1571;","ç·&#1670;","i·[&#1569;&#1740;&#1574;]","ğ·&#1594;","&#380;·&#1590;","s&#817;·&#1579;","&#7789;·&#1591;","g·&#1711;","a·&#1570;","&#7779;·&#1589;","ş·&#1588;","&#7580;·&#1593;","e·&#1607;","z·&#1586;","&#7723;·&#1582;","i·&#1610;","d·&#1583;","&#7717;·&#1581;","æ·&#1575;","m·&#1605;","s·&#1587;","&#7731;·&#1602;","f·&#1601;","n·&#1606;","b·&#1576;","l·&#1604;","c·&#1580;","y·&#1609;","k·&#1603;","r·&#1585;","v·&#1608;","&#7827;·&#1592;","t·&#1578;")
+var harfler=new Array(" ne Â· &#65255;&#65258; ","8Â·[&#1783;&#1640;]","eÂ·&#1749;","3Â·&#1635;","4Â·&#1636;","9Â·[&#1785;&#1641;]","iÂ·&#65164;","laÂ·&#65275;","yÂ·&#1744;","iÂ·&#1573;","inÂ·&#1613;","tÂ·&#1577;","Ã¢Â·&#1648;","AllÃ¢hÂ·&#65010;","nÂ·&#1611;","6Â·&#1638;","2Â·&#1634;","1Â·&#1633;","nÂ·&#8204;&#1611;","jÂ·&#1688;",";Â·&#1563;","?Â·&#1567;","Â·&#1616;","Â·&#1618;","Â·&#1614;","Â·&#1615;","Ã±Â·&#1891;","0Â·[&#1776;&#1632;]","5Â·&#1637;","-iÂ·&#1728;","2Â·&#1778;","3Â·&#1779;","1Â·&#1777;","tenÂ·&#1577;&#1611;",";Â·&#1563;","Ã¼Â·&#1572;","&#7829;Â·&#1584;",",Â·&#1644;","?Â·&#1567;",",Â·&#1548;","Ã±Â·[&#1705;&#1709;]","pÂ·&#1662;","nÂ·&#1575;&#1611;","eÂ·&#1571;","Ã§Â·&#1670;","iÂ·[&#1569;&#1740;&#1574;]","Ã°Â·&#1594;","&#380;Â·&#1590;","s&#817;Â·&#1579;","&#7789;Â·&#1591;","gÂ·&#1711;","aÂ·&#1570;","&#7779;Â·&#1589;","Ã¾Â·&#1588;","&#7580;Â·&#1593;","eÂ·&#1607;","zÂ·&#1586;","&#7723;Â·&#1582;","iÂ·&#1610;","dÂ·&#1583;","&#7717;Â·&#1581;","Ã¦Â·&#1575;","mÂ·&#1605;","sÂ·&#1587;","&#7731;Â·&#1602;","fÂ·&#1601;","nÂ·&#1606;","bÂ·&#1576;","lÂ·&#1604;","cÂ·&#1580;","yÂ·&#1609;","kÂ·&#1603;","rÂ·&#1585;","vÂ·&#1608;","&#7827;Â·&#1592;","tÂ·&#1578;")
 
 var yuklemeEkrani$=document.getElementsByClassName("yuklemeEkrani")
 
@@ -421,13 +421,13 @@ function cevir() {
     m = FazlaBosluklariSil(m);
 
     for (let i = 0; i < harfler.length; i++) {
-        let [harf0, harf1] = harfler[i].split("·");
+        let [harf0, harf1] = harfler[i].split("Â·");
         let pattern = new RegExp(harf1, "g");
         m = m.replace(pattern, harf0);
     }
 
     for (let i = 0; i < kokler.length; i++) {
-        let [kok0, kok1] = kokler[i].split("·");
+        let [kok0, kok1] = kokler[i].split("Â·");
         let pattern = new RegExp(kok1, "g");
         m = m.replace(pattern, kok0);
     }
@@ -447,7 +447,7 @@ function cevir() {
     let s = t;
 
     if (premium) {
-        t = t.replace(/ğ/g, "\u0121").replace(/û/g, "\u016B").replace(/â/g, "\u0101").replace(/\'/g, "’");
+        t = t.replace(/Ã°/g, "\u0121").replace(/Ã»/g, "\u016B").replace(/Ã¢/g, "\u0101").replace(/\'/g, "â€™");
     }
 
     duzelt2(t);
@@ -492,10 +492,10 @@ function paragrafaCevir(e){
 	
 	if(premium){
 		e=e.replace(/>\u1d9c(.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
-		e=e.replace(/>— (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
-		e=e.replace(/\: — (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/>â€” (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/\: â€” (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
 		e=e.replace(/> (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
-		e=e.replace(/>«(.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
+		e=e.replace(/>Â«(.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
 		e=e.replace(/<p>(.)/g,function(v){return "<p>"+v.toLocaleUpperCase('tr-TR')} )
 		e=e.replace(/[\.!?] (.)/g,function(v){return v.toLocaleUpperCase('tr-TR')} )
 		
@@ -510,16 +510,16 @@ function paragrafaCevir(e){
 	
 	e=e.replace(/>[sS]n/g,">Sen ")
 	
-	e=e.replace(/<p><br>/g,"<p>") // fazla br taglarını sil
+	e=e.replace(/<p><br>/g,"<p>") // fazla br taglarÃ½nÃ½ sil
 	
-	if(!premium){e=e.replace(/\u0121/g,"ğ")}
+	if(!premium){e=e.replace(/\u0121/g,"Ã°")}
 	
 	return e
 	}
 
 function SonRutus(e){
 	for (i=0; i<=birebirRutus.length-1; i++){
-		bire=birebirRutus[i].split("·")
+		bire=birebirRutus[i].split("Â·")
 		eval("pattern=/"+bire[1]+"/g")
 		e=e.replace(pattern,bire[0])
 		}
@@ -528,7 +528,7 @@ function SonRutus(e){
 
 function BitisRutusu(e) {
     for (let i = 0; i < gorunmezRutus.length; i++) {
-        let bire = gorunmezRutus[i].split("·");
+        let bire = gorunmezRutus[i].split("Â·");
         let pattern = new RegExp(bire[1], "g");
         e = e.replace(pattern, bire[0]);
     }
@@ -541,7 +541,7 @@ function BitisRutusu2(e) {
     e = e.replace(new RegExp(String.fromCharCode(10), 'g'), '');
 
     for (let i = 0; i < sonSadeRutus.length; i++) {
-        let bire = sonSadeRutus[i].split("·");
+        let bire = sonSadeRutus[i].split("Â·");
         let pattern = new RegExp(bire[0], "g");
         e = e.replace(pattern, bire[1]);
     }
@@ -552,15 +552,15 @@ function BitisRutusu2(e) {
 
 function sadelestirRutus(e) {
     for (let j = 0; j < sadeRutus.length; j++) {
-        let bire = sadeRutus[j].split("·");
+        let bire = sadeRutus[j].split("Â·");
         let pattern = new RegExp(bire[0], "g");
         e = e.replace(pattern, bire[1]);
     }
 
     if (premium) {
-        e = e.replace(/â/g, "a")
-            .replace(/û/g, "u")
-            .replace(/î/g, "i");
+        e = e.replace(/Ã¢/g, "a")
+            .replace(/Ã»/g, "u")
+            .replace(/Ã®/g, "i");
     }
 
     return e;
@@ -568,37 +568,37 @@ function sadelestirRutus(e) {
 
 function transkripsiyon(e) {
     for (let i = 0; i < birebir.length; i++) {
-        let bire = birebir[i].split("·");
+        let bire = birebir[i].split("Â·");
         let pattern = new RegExp(" " + bire[1] + " ", "g");
         e = e.replace(pattern, " " + bire[0] + " ");
     }
 
     for (let i = 0; i < birebir.length; i++) {
-        let bire = birebir[i].split("·");
+        let bire = birebir[i].split("Â·");
         let pattern = new RegExp(bire[1], "g");
         e = e.replace(pattern, bire[0]);
     }
 
-    e = e.replace(/e k /g, "eñ ")
+    e = e.replace(/e k /g, "eÃ± ")
         .replace(/e ie /g, "eye ")
-        .replace(/a cğk/g, "acağıñ")
+        .replace(/a cÃ°k/g, "acaÃ°Ã½Ã±")
         .replace(/e dn /g, "eden ")
-        .replace(/âliny /g, "âlini ")
+        .replace(/Ã¢liny /g, "Ã¢lini ")
         .replace(/a(n)lr /g, "a$1lar ")
-        .replace(/âly /g, "âli ")
+        .replace(/Ã¢ly /g, "Ã¢li ")
         .replace(/ily /g, "ili ")
-        .replace(/([eiî])(.)lmş/g, "$1$2ilmiş")
-        .replace(/([âaı])lmş/g, "$1lmış")
-        .replace(/([ouû])lmş/g, "$1lmuş")
-        .replace(/([öü])lmş/g, "$1lmüş")
-        .replace(/([eiî])tk /g, "$1tiñ ")
-        .replace(/([eiî]) sy /g, "$1si ")
-        .replace(/([eiî])([\u1e6d])dn /g, "$1$2den ")
-        .replace(/([eiî])lrk /g, "$1leriñ ")
+        .replace(/([eiÃ®])(.)lmÃ¾/g, "$1$2ilmiÃ¾")
+        .replace(/([Ã¢aÃ½])lmÃ¾/g, "$1lmÃ½Ã¾")
+        .replace(/([ouÃ»])lmÃ¾/g, "$1lmuÃ¾")
+        .replace(/([Ã¶Ã¼])lmÃ¾/g, "$1lmÃ¼Ã¾")
+        .replace(/([eiÃ®])tk /g, "$1tiÃ± ")
+        .replace(/([eiÃ®]) sy /g, "$1si ")
+        .replace(/([eiÃ®])([\u1e6d])dn /g, "$1$2den ")
+        .replace(/([eiÃ®])lrk /g, "$1leriÃ± ")
         .replace(/lerile /g, "leriyle ")
-        .replace(/([aâeiî])link /g, "$1linin ")
+        .replace(/([aÃ¢eiÃ®])link /g, "$1linin ")
         .replace(/ ([\.,? !;:])/g, "$1")
-        .replace(/\: \- /g, ": — ");
+        .replace(/\: \- /g, ": â€” ");
 
     return e;
 }
@@ -606,10 +606,10 @@ function transkripsiyon(e) {
 
 function sadelestir(e) {
     e = e.replace(/[\u1d9c]/g, "")
-        .replace(/\u0121/g, "ğ")
-        .replace(/\u016B/g, "û")
-        .replace(/\u0101/g, "â")
-        .replace(/’/g, "'")
+        .replace(/\u0121/g, "Ã°")
+        .replace(/\u016B/g, "Ã»")
+        .replace(/\u0101/g, "Ã¢")
+        .replace(/â€™/g, "'")
         .replace(/\u1E62/g, "S")
         .replace(/\u00f1/g, "n")
         .replace(/\u1e2a/g, "H")
@@ -625,12 +625,12 @@ function sadelestir(e) {
         .replace(new RegExp(String.fromCharCode(8204), 'g'), "");
 
     for (let k = 0; k < sade.length; k++) {
-        let kelime = sade[k].split("·");
+        let kelime = sade[k].split("Â·");
         e = e.replace(new RegExp(" " + kelime[0] + " ", "g"), " " + kelime[1] + " ");
     }
 
     for (let k = 0; k < sade.length; k++) {
-        let kelime = sade[k].split("·");
+        let kelime = sade[k].split("Â·");
         e = e.replace(new RegExp(kelime[0], "g"), kelime[1]);
     }
 
@@ -713,8 +713,8 @@ function uzundanKisaya(e,ee){
 
 	e.sort(function(a,b){
 		try {
-			a=a.split("·")[ee].length
-			b=b.split("·")[ee].length
+			a=a.split("Â·")[ee].length
+			b=b.split("Â·")[ee].length
 			}catch(err) {}
 		return a<b
 		})
@@ -735,7 +735,7 @@ function uzundanKisaya(e,ee){
 	return e
 	}
 
-// bir kelimeyi değiştiren kuralı bulur
+// bir kelimeyi deÃ°iÃ¾tiren kuralÃ½ bulur
 function kuralKontrol(a1,a2){
 	
 	id("gizliDiv").innerHTML=" "+a1+" "
@@ -746,7 +746,7 @@ function kuralKontrol(a1,a2){
 	a$=""
 	
 	for(i=0;i<birebir.length-1;i++){
-		deg=birebir[i].split("·")
+		deg=birebir[i].split("Â·")
 		eval("pattern=/"+deg[1]+"/g")
 		
 		if(a1.replace(pattern,deg[0])!=a1){
@@ -756,7 +756,7 @@ function kuralKontrol(a1,a2){
 		}
 	
 	for(i=0; i<birebirRutus.length-1; i++){
-		deg=birebirRutus[i].split("·")
+		deg=birebirRutus[i].split("Â·")
 		eval("pattern=/"+deg[1]+"/g")
 		
 		if(a1.replace(pattern,deg[0])!=a1){
@@ -767,7 +767,7 @@ function kuralKontrol(a1,a2){
 
 
 	for(i=0;i<sade.length-1;i++){
-		deg=sade[i].split("·")
+		deg=sade[i].split("Â·")
 		eval("pattern=/"+deg[0]+"/g")
 		
 		if(a1.replace(pattern,deg[1])!=a1){
@@ -777,7 +777,7 @@ function kuralKontrol(a1,a2){
 		}
 	
 	for(i=0;i<sade.length-1;i++){
-		deg=sade[i].split("·")
+		deg=sade[i].split("Â·")
 		eval("pattern=/"+deg[0]+"/g")
 		
 		if(a1.replace(pattern,deg[1])!=a1){
@@ -788,11 +788,11 @@ function kuralKontrol(a1,a2){
 	}
 
 function istatistikGetir(){
-	a$="Transkripsiyonel Karakter Sayısı: <b>"+harfler.length+"</b><br>"
-	a$+="Osmanlıca Kural ve Kelime Sayısı: <b>"+birebir.length+"</b><br>"
-	a$+="Osmanlıca Rütuş Kural Sayısı: <b>"+(birebirRutus.length+gorunmezRutus.length)+"</b><br>"
-	a$+="Sadeleştirme Kural ve Kelime Sayısı: <b>"+sade.length+"</b><br>"
-	a$+="Sadeleştirme Rütuş Kural Sayısı: <b>"+(sadeRutus.length+sonSadeRutus.length)+"</b>"
+	a$="Transkripsiyonel Karakter SayÃ½sÃ½: <b>"+harfler.length+"</b><br>"
+	a$+="OsmanlÃ½ca Kural ve Kelime SayÃ½sÃ½: <b>"+birebir.length+"</b><br>"
+	a$+="OsmanlÃ½ca RÃ¼tuÃ¾ Kural SayÃ½sÃ½: <b>"+(birebirRutus.length+gorunmezRutus.length)+"</b><br>"
+	a$+="SadeleÃ¾tirme Kural ve Kelime SayÃ½sÃ½: <b>"+sade.length+"</b><br>"
+	a$+="SadeleÃ¾tirme RÃ¼tuÃ¾ Kural SayÃ½sÃ½: <b>"+(sadeRutus.length+sonSadeRutus.length)+"</b>"
 	id("cikti3").innerHTML=a$
 	}
 
@@ -812,25 +812,25 @@ function gosterGizle(e){
 
 function FazlaBosluklariSil(e){
 	
-	// Şeddeleri Sil	
+	// Ãeddeleri Sil	
 	e=e.replace(/(.)\u0651/g,"$1")
 	//e=e.replace(new RegExp('\r?\n','g'), '');
 	
-	// Ön Rutuş
+	// Ã–n RutuÃ¾
 	e=e.trim().replace(/(\r|\n)/g,"")
 	e=e.replace(/\s{2,}/g, " ")
 	
 	// &nbsp;	
 	e=e.replace(" "+c$," ")
 
-	// noktaları düzenle
+	// noktalarÃ½ dÃ¼zenle
 	e=e.replace(/[\.]{3}/g,".")
 	
 	
-	// Ön Boşlukları Sil
+	// Ã–n BoÃ¾luklarÃ½ Sil
 	e=e.replace(/<br> /g,"<br>")
 		
-	// Son Rütuş
+	// Son RÃ¼tuÃ¾
 	e=e.trim().replace(/(\r|\n)/g,"")
 	
 	e=e.replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ")
@@ -838,7 +838,7 @@ function FazlaBosluklariSil(e){
 	}
 
 function ocrGetir(e){
-	id("input").innerText="Resim dosyasındaki Osmanlıca metin çözümleniyor..."
+	id("input").innerText="Resim dosyasÃ½ndaki OsmanlÃ½ca metin Ã§Ã¶zÃ¼mleniyor..."
 	id("cikti1").HTML=""
 	id("cikti2").HTML=""
 	
@@ -851,7 +851,7 @@ function ocrGetir(e){
     cevir()
     
   }).catch(err => {
-    id("input").innerHTML  = 'Resim dosyası çözülemedi!';
+    id("input").innerHTML  = 'Resim dosyasÃ½ Ã§Ã¶zÃ¼lemedi!';
     kaydir("input");
     return;
   });
@@ -896,7 +896,7 @@ function rtf(e){
 function aciklamaEkle(e){
 	
 	for(i=0; i<=aciklama.length-1;i++){
-		a$=aciklama[i].split("·")
+		a$=aciklama[i].split("Â·")
 		
 		a$[1]=a$[1].replace(/<br>/g,"&#013;")		
 			
@@ -907,7 +907,7 @@ function aciklamaEkle(e){
 	}
 
 function miladiTakvim(){
-	// Hazırlanmamış modül
+	// HazÃ½rlanmamÃ½Ã¾ modÃ¼l
 	p=id("cikti2").getElementsByTagName("p")
 	//alert(p.length)
 	}
@@ -920,10 +920,10 @@ function toFindDuplicates(arry,e4) {
 	abort = false
 	
 	for(i=0;i<=arry.length-10 && !abort;i++){
-		a1=arry[i].split("·")[e4]
+		a1=arry[i].split("Â·")[e4]
 		
 		for(j=0;j<=arry.length-10 && !abort;j++){
-			a2=arry[j].split("·")[e4]
+			a2=arry[j].split("Â·")[e4]
 			
 			if(i!=j && a1==a2){
 			//if(i!=j && arry[i]==arry[j]){
@@ -963,10 +963,10 @@ function kaydir(hedefId) {
 }
 
 
-// --- RETRO WINDOWS DOSYA SEÇİCİ JAVASCRIPT MODÜLLERİ ---
+// --- RETRO WINDOWS DOSYA SEÃ‡ÃCÃ JAVASCRIPT MODÃœLLERÃ ---
 const GH_KULLANICI = "Akhenaton41";
 const GH_REPO = "Osmanlica-Ceviri";
-const GH_KLASOR = "örnek dosyalar";
+const GH_KLASOR = "Ã¶rnek dosyalar";
 let secilenDosyaUrl = "";
 
 async function githubKlasorunuPencereyeYukle() {
@@ -975,7 +975,7 @@ async function githubKlasorunuPencereyeYukle() {
     
     try {
         const response = await fetch(apiURL);
-        if (!response.ok) throw new Error("Depoya ulaşılamadı");
+        if (!response.ok) throw new Error("Depoya ulaÃ¾Ã½lamadÃ½");
         
         const dosyalar = await response.json();
         let dosyaElemanlari = "";
@@ -984,7 +984,7 @@ async function githubKlasorunuPencereyeYukle() {
         dosyalar.forEach(dosya => {
             if (dosya.name.toLowerCase().endsWith('.txt')) {
                 let temizAd = dosya.name.replace(/\.[^/.]+$/, "");
-                // Dosyaları klasik Windows ikon yapısı gibi listeliyoruz (&#128196;)
+                // DosyalarÃ½ klasik Windows ikon yapÃ½sÃ½ gibi listeliyoruz (&#128196;)
                 dosyaElemanlari += `
                     <div class="win-file-item" onclick="winDosyaSec(this, '${temizAd}', '${dosya.download_url}')">
                         <span class="win-file-icon">&#128196;</span>
@@ -997,11 +997,11 @@ async function githubKlasorunuPencereyeYukle() {
         if (txtVarMi) {
             fileView.innerHTML = dosyaElemanlari;
         } else {
-            fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">Klasörde metin dosyası bulunamadı.</div>';
+            fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #808080;">KlasÃ¶rde metin dosyasÃ½ bulunamadÃ½.</div>';
         }
     } catch (error) {
-        console.error("GitHub listesi alınamadı:", error);
-        fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #cc0000;">Bağlantı Hatası! Arşiv listesi alınamadı.</div>';
+        console.error("GitHub listesi alÃ½namadÃ½:", error);
+        fileView.innerHTML = '<div style="grid-column: span 3; text-align: center; padding-top: 50px; color: #cc0000;">BaÃ°lantÃ½ HatasÃ½! ArÃ¾iv listesi alÃ½namadÃ½.</div>';
     }
 }
 
@@ -1017,13 +1017,13 @@ function winPencerisiniKapat() {
 }
 
 function winDosyaSec(element, ad, downloadUrl) {
-    // Önceki seçili olanların stilini temizle
+    // Ã–nceki seÃ§ili olanlarÃ½n stilini temizle
     const items = document.getElementsByClassName("win-file-item");
     for(let i=0; i<items.length; i++) {
         items[i].classList.remove("selected");
     }
     
-    // Yeni elemanı seçili yap ve alttaki input çubuğuna adını yaz
+    // Yeni elemanÃ½ seÃ§ili yap ve alttaki input Ã§ubuÃ°una adÃ½nÃ½ yaz
     element.classList.add("selected");
     document.getElementById("winFileNameInput").value = ad + ".txt";
     secilenDosyaUrl = downloadUrl;
@@ -1031,7 +1031,7 @@ function winDosyaSec(element, ad, downloadUrl) {
 
 async function winSecilenDosyayiAc() {
     if (!secilenDosyaUrl) {
-        alert("Lütfen&#21015;&#34920;den bir dosya seçin!");
+        alert("LÃ¼tfen&#21015;&#34920;den bir dosya seÃ§in!");
         return;
     }
     
@@ -1046,11 +1046,11 @@ async function winSecilenDosyayiAc() {
             girdiAlani.innerText = orijinalMetin;
             arabicControl();
             save();
-            Cevir(); // Metni yükledikten sonra otomatik çeviriyi tetikler
+            Cevir(); // Metni yÃ¼kledikten sonra otomatik Ã§eviriyi tetikler
             kaydir("input");
         }
     } catch (error) {
-        alert("Dosya içeriği GitHub'dan çekilirken hata oluştu!");
+        alert("Dosya iÃ§eriÃ°i GitHub'dan Ã§ekilirken hata oluÃ¾tu!");
     }
 }
 
@@ -1065,7 +1065,7 @@ document.getElementsByTagName("body")[0].onload = function(){
 			//toFindDuplicates(birebir,0)
 			//kuralKontrol(\"milletine\",\"milletyine\")
 			
-			// --- MODERN KLASÖR/ELEMENT DEĞİŞİM İZLEYİCİSİ (MutationObserver) ---
+			// --- MODERN KLASÃ–R/ELEMENT DEÃÃÃÃM ÃZLEYÃCÃSÃ (MutationObserver) ---
 			if (typeof yuklemeEkrani$ !== 'undefined' && yuklemeEkrani$.length >= 2) {
 				const izleyici1 = new MutationObserver(function(mutations) {
 					yuklemeEkrani$[0].style.display = "none";
