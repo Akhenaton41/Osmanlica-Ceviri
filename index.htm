@@ -1031,21 +1031,7 @@ function fontHafizasiniYukle() {
 }
 
 function dizileriHazirla() {
-    let tumDiziler = [birebir, birebirRutus, gorunmezRutus, sade, sadeRutus, sonSadeRutus, aciklama];
-	
-	
-    tumDiziler.forEach(dizi => {
-        for (let i = 0; i < dizi.length; i++) {
-            // Sadece string olanları dönüştür
-			if (typeof dizi[i] === 'string') {
-				dizi[i] = dizi[i].replace(/{bas}|{b}/g, bas)
-                     .normalize("NFC")
-                     .replace(/{son}|{s}/g, son)
 
-                                 
-            }
-        }
-    });
 }
 
 </script></body></html>
