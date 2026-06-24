@@ -1,6 +1,6 @@
 ﻿var premium=true, kokler=new Array("miş · mş "," eñ · æk ","ẓa·ẓe","ᶜa·ᶜe")
 
-let G = String.fromCharCode(289);
+var G = String.fromCharCode(289);
 
 //var oon$=String.fromCharCode(10)
 var c$=String.fromCharCode(8204)
