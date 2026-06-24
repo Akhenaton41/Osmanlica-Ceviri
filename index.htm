@@ -5,6 +5,20 @@
 <link rel="stylesheet" type="text/css" href="css/font.css">
 <link rel="stylesheet" type="text/css" href="css/buton.css">
 
+<style>
+/* Editör kutusunun içindeki satır arası boşlukları ve paragrafları düzenler */
+#input p, #input div {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding: 0 !important;
+}
+
+/* Arapça fontların aşırı yüksek satır açmasını engeller ve sıkılaştırır */
+.arabic {
+    line-height: 1.4 !important;
+    padding-top: 10px !important;
+}
+</style>
 
 </head><body>
 
@@ -26,7 +40,37 @@
 	</tr>
 	<tr>
 		<td colspan="2"><div id="ceviriInput" class="golgeli">
-			<div class="baslik">Osmanlıca metni ya da görsel urlsini aşağıdaki kutuya yapıştırın.</div>
+			
+
+
+
+<div class="baslik" style="display: flex; justify-content: space-between; align-items: center; padding: 0 10px; height: 26px; box-sizing: border-box;">
+	<span>Osmanlıca metni aşağıdaki kutuya yapıştırın veya yazın.</span>
+	
+	<!-- Sağ Taraf: CSS Çakışmasını Ezen Birleşik Font Alanı -->
+	<div style="display: flex !important; align-items: center !important; height: 20px !important; border: 1px solid #7f9db9 !important; border-radius: 3px !important; background: #fff !important; padding: 0 !important; position: absolute !important; right: 20px !important; box-sizing: border-box !important; overflow: hidden !important;">
+		
+		<!-- Gri "font" Alanı (Kenarlıksız, Sadece Arka Plan) -->
+		<span style="font-family: 'MS Sans Serif', Tahoma, sans-serif; font-size: 11px; color: #444; background: #e1e1e1; height: 100%; padding: 0 6px; display: flex; align-items: center; user-select: none; box-sizing: border-box; margin: 0; border: none !important;">font</span>
+		
+		<!-- Saf Select Kutusu -->
+		<select id="fontSecici" onchange="fontuKaydetVeUygula(this.value);" style="font-family: 'MS Sans Serif', Tahoma, sans-serif; font-size: 11px; padding: 1px 2px; cursor: pointer; background: #fff; color: #000; height: 100%; width: 120px; box-sizing: border-box; outline: none; border: none !important; margin: 0; display: flex; align-items: center; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none; -webkit-box-shadow: none;">
+			<option value="Aref Ruqaa">Aref Ruqaa</option>
+			<option value="Divani">Dîvânî</option>
+			<option value="Kufi">Kûfî</option>
+			<option value="HayratMatbu">Matbû</option>
+			<option value="Nesih">Nesih</option>
+			<option value="BArabics">Rika</option>
+			<option value="EKalem">Sülüs</option>
+			<option value="Talik">Tâlik</option>
+		</select>
+		
+	</div>
+</div>
+
+
+
+
 			<div id="input" contenteditable="true" class="arabic" onInput="save()">
 				&nbsp;</div>
 		</div></td>
@@ -47,7 +91,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2" id="bosAlan"><input type="file" style="display:none" id="dosya" accept=".txt, .rtf">&nbsp;</td>
+		<td colspan="2" id="bosAlan"><input type="file" style="display:none" id="dosya" accept=".txt">&nbsp;</td>
 	</tr>
 	<tr>
 		<td width="50%"><div id="ceviriTranskripsiyon" class="golgeli" onload="yuklemeEkrani$[0].style.display='none'">
@@ -138,17 +182,20 @@ function giris() {
     sadeRutus = uzundanKisaya(duzelt(sadeRutus), 0);
     sonSadeRutus = uzundanKisaya(duzelt(sonSadeRutus), 0);
     aciklama = uzundanKisaya(duzelt(aciklama), 0);
-
+	
+	dizileriHazirla()
+	
+    // --- TEMİZLENMİŞ DOSYA YÜKLEME ALANI (Sadece Düz Metin ve RTF) ---
     id("dosya").addEventListener('change', (e) => {
         const file = e.target.files[0];
+        if (!file) return;
+
         const fr = new FileReader();
+        let uzanti = (file.name).lastIndexOf(".");
+        uzanti = (file.name).substr(uzanti + 1).toLowerCase();
 
         fr.onload = () => {
             let fileContent = fr.result;
-
-            let uzanti = (file.name).lastIndexOf(".");
-            uzanti = (file.name).substr(uzanti + 1);
-            uzanti = uzanti.toLowerCase();
 
             if (uzanti === "rtf") {
                 fileContent = rtf(fileContent);
@@ -161,35 +208,42 @@ function giris() {
 
             arabicControl();
             save();
-
-            id('ceviriInput').scrollIntoView();
+            kaydir("input");
         };
-
         fr.readAsText(file);
     });
 
     id("input").addEventListener('paste', stillKaldir);
 
+    // --- COOKIE OKUMA VE SAYFA İLK AÇILIŞINDAKİ ZIPLAMA ENGELLEYİCİ ---
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+
     let x = document.cookie; 
     if (x) {
         x = x.substring(6);
         if (x.length > 5) {
+            id("input").contentEditable = "false"; 
             id("input").innerHTML = x;
+            
+            arabicControl();
+            
+            setTimeout(() => {
+                id("input").contentEditable = "true";
+            }, 50);
+        } else {
             arabicControl();
         }
+    } else {
+        arabicControl();
     }
-
-    arabicControl();
-
-    if (birebir) {
-        //const uniq = birebir.map(n => ({ count: 1, name: n })).reduce((n, e) => (n[e.name] = (n[e.name] || 0) + e.count, n), {});
-        //const duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1);
-        //alert(duplicates.length + " - " + duplicates);
-    }
-
+	
+	fontHafizasiniYukle();
+	
     istatistikGetir();
-
-    //document.getElementsByTagName("body")[0].scrollIntoView();
+    
+    cevir()
 }
 
 function id(e){return document.getElementById(e)}
@@ -236,29 +290,37 @@ function cevir() {
 
     m = FazlaBosluklariSil(m);
 
+    // Yardımcı döngü fonksiyonu: Değişiklik durana kadar çalıştır
+    function donguyleCevir(baslangicMetni, fonksiyon) {
+        let metin = baslangicMetni;
+        let degisti = true;
+        let tur = 0;
+        // Maksimum 10 tur sınırlaması güvenlik içindir
+        while (degisti && tur < 10) {
+            let eskiMetin = metin;
+            metin = fonksiyon(metin);
+            degisti = (metin !== eskiMetin);
+            tur++;
+        }
+        return metin;
+    }
+
+    // Basit replace döngüleri
     for (let i = 0; i < harfler.length; i++) {
         let [harf0, harf1] = harfler[i].split("·");
-        let pattern = new RegExp(harf1, "g");
-        m = m.replace(pattern, harf0);
+        m = m.replace(new RegExp(harf1, "g"), harf0);
     }
 
     for (let i = 0; i < kokler.length; i++) {
         let [kok0, kok1] = kokler[i].split("·");
-        let pattern = new RegExp(kok1, "g");
-        m = m.replace(pattern, kok0);
+        m = m.replace(new RegExp(kok1, "g"), kok0);
     }
 
-    let kontrolSayisi = 4;
+    // "t" metni üzerinde işlemler
     let t = m;
-    for (let ks = 0; ks <= kontrolSayisi; ks++) {
-        t = transkripsiyon(t);
-    }
-    for (let ks = 0; ks <= kontrolSayisi; ks++) {
-        t = SonRutus(t);
-    }
-    for (let ks = 0; ks <= kontrolSayisi; ks++) {
-        t = BitisRutusu(t);
-    }
+    t = donguyleCevir(t, transkripsiyon);
+    t = donguyleCevir(t, SonRutus);
+    t = donguyleCevir(t, BitisRutusu);
 
     let s = t;
 
@@ -268,15 +330,10 @@ function cevir() {
 
     duzelt2(t);
 
-    for (let i = 0; i <= kontrolSayisi; i++) {
-        s = sadelestir(s);
-    }
-    for (let i = 0; i <= kontrolSayisi; i++) {
-        s = sadelestirRutus(s);
-    }
-    for (let ks = 0; ks <= kontrolSayisi; ks++) {
-        s = BitisRutusu2(s);
-    }
+    // "s" metni üzerinde işlemler
+    s = donguyleCevir(s, sadelestir);
+    s = donguyleCevir(s, sadelestirRutus);
+    s = donguyleCevir(s, BitisRutusu2);
 
     t = aciklamaEkle(t);
     s = aciklamaEkle(s);
@@ -362,6 +419,10 @@ function BitisRutusu2(e) {
         e = e.replace(pattern, bire[1]);
     }
 
+// Boşluk veya satır başını yakala, "ke"yi gör, 
+    // arkasında alfabedeki harflerden biri yoksa "ki" yap.
+    e = e.replace(/(^|[\s])ke(?![a-zA-ZâÂêÊçÇğĞ&#7723;&#7722;&#7717;&#7716;ıİîÎ&#7731;&#7730;ñÑöÖs&#817;&#7776;şŞûÛüÜ&#380;&#379;])/g, "$1ki");
+
     return e;
 }
 
@@ -383,17 +444,16 @@ function sadelestirRutus(e) {
 }
 
 function transkripsiyon(e) {
-    for (let i = 0; i < birebir.length; i++) {
-        let bire = birebir[i].split("·");
-        let pattern = new RegExp(" " + bire[1] + " ", "g");
-        e = e.replace(pattern, " " + bire[0] + " ");
-    }
 
-    for (let i = 0; i < birebir.length; i++) {
-        let bire = birebir[i].split("·");
-        let pattern = new RegExp(bire[1], "g");
-        e = e.replace(pattern, bire[0]);
-    }
+e = e.normalize("NFC");
+
+for (let i = 0; i < birebir.length; i++) {
+    let [yeni, eski] = birebir[i].split("·");
+    
+    // Hem kelime etrafı boşluklu halini hem de yalın halini tek döngüde temizler
+    e = e.replace(new RegExp(" " + eski + " ", "g"), " " + yeni + " ");
+    e = e.replace(new RegExp(eski, "g"), yeni);
+}
 
     e = e.replace(/e k /g, "eñ ")
         .replace(/e ie /g, "eye ")
@@ -648,31 +708,73 @@ function FazlaBosluklariSil(e){
 		
 	// Son Rütuş
 	e=e.trim().replace(/(\r|\n)/g,"")
+
+	e = e.replace(/[\u2000-\u200D\uFEFF\u00A0]/g, " ");
+    
+    // 2. Şimdi fazla boşlukları tekrar temizle
+    e = e.replace(/\s{2,}/g, " ");
 	
 	e=e.replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ")
 	return e
 	}
 
-function ocrGetir(e){
-	id("input").innerText="Resim dosyasındaki Osmanlıca metin çözümleniyor..."
-	id("cikti1").HTML=""
-	id("cikti2").HTML=""
-	
-	Tesseract.recognize(
-    e, 'ara'
-  ).then(result => {
-    id("input").innerHTML = result.data.text;
-    save();
-    kaydir("input");
-    cevir()
-    
-  }).catch(err => {
-    id("input").innerHTML  = 'Resim dosyası çözülemedi!';
-    kaydir("input");
-    return;
-  });
 
-	}
+
+
+function ocrGetir(e){
+    id("input").innerText = "Resim dosyasındaki Osmanlıca metin çözümleniyor...";
+    id("cikti1").innerHTML = ""; // .HTML hatası düzeltildi
+    id("cikti2").innerHTML = ""; // .HTML hatası düzeltildi
+    
+    // Tarayıcının yerel resim nesnesiyle yüklemeyi deniyoruz
+    var img = new Image();
+    img.crossOrigin = "Anonymous"; // CORS izni talep et
+    
+    img.onload = function() {
+        // Eğer resim CORS engeline takılmadan pürüzsüz indi ise Tesseract'a gönderiyoruz
+        Tesseract.recognize(
+            e, 
+            'ara'
+        ).then(result => {
+            let temizMetin = result.data.text ? result.data.text.trim() : "";
+            
+            if (temizMetin.length > 0) {
+                id("input").innerHTML = temizMetin;
+                save();
+                kaydir("input");
+                cevir();
+            } else {
+                id("input").innerHTML = "Resim başarıyla okundu fakat içerisindeki hat sanatı veya karmaşık el yazısı OCR motoru tarafından harfe dökülemedi. Lütfen matbu (kitap baskısı) düzgün bir görsel deneyin.";
+                loaderlariKapat();
+            }
+        }).catch(err => {
+            console.error("OCR Motor Hatası:", err);
+            id("input").innerHTML = "OCR motoru çalışırken bir iç hata oluştu!";
+            loaderlariKapat();
+        });
+    };
+    
+    img.onerror = function() {
+        // İŞTE KULLANICIYI KURTARAN ALAN: 
+        // Tarayıcı CORS hatası verip resmi çekmeyi reddettiği an (Pinterest vb.) burası tetiklenir.
+        id("input").innerHTML = `<div style="color:#d9534f; font-weight:bold; padding:10px;">
+            &#9888;&#65039; Yapıştırdığınız resim linki (CORS güvenlik duvarı nedeniyle) doğrudan çözümlenemedi.<br><br>
+            <span style="color:#333; font-weight:normal;">Kullanıcılar için pratik çözüm:</span><br>
+            Resme sağ tıklayıp <b>"Resmi Kopyala"</b> dedikten sonra doğrudan yukarıdaki kutuya <b>CTRL+V</b> ile yapıştırabilir veya resmi bilgisayarınıza indirip aşağıdaki <b>"Dosyadan Yükle"</b> butonunu kullanabilirsiniz.
+        </div>`;
+        
+        // Loader'lar ekranda asılı kalmasın, tık diye kapansın!
+        loaderlariKapat();
+    };
+    
+    // İşlemi başlatıyoruz
+    img.src = e;
+}
+
+
+
+
+
 
 function stillKaldir(e){
 	
@@ -872,38 +974,79 @@ async function winSecilenDosyayiAc() {
 
 
 document.getElementsByTagName("body")[0].onload = function(){
-	scriptYukle("jquery.min.js","sc3")
-	scriptYukle("kelimeler.js","sc1")
-	id("sc1").onload=function(){
-		scriptYukle("ocr.js","sc2")
-		id("sc2").onload=function(){
-			giris();				
-			//toFindDuplicates(birebir,0)
-			//kuralKontrol(\"milletine\",\"milletyine\")
-			
-			// --- MODERN KLASÖR/ELEMENT DEĞİŞİM İZLEYİCİSİ (MutationObserver) ---
-			if (typeof yuklemeEkrani$ !== 'undefined' && yuklemeEkrani$.length >= 2) {
-				const izleyici1 = new MutationObserver(function(mutations) {
-					yuklemeEkrani$[0].style.display = "none";
-				});
-				
-				const izleyici2 = new MutationObserver(function(mutations) {
-					yuklemeEkrani$[1].style.display = "none";
-				});
-				
-				const hedefCikti1 = document.getElementById("cikti1");
-				const hedefCikti2 = document.getElementById("cikti2");
-				
-				const izlemeAyarlari = { childList: true, subtree: true };
-				
-				if(hedefCikti1) izleyici1.observe(hedefCikti1, izlemeAyarlari);
-				if(hedefCikti2) izleyici2.observe(hedefCikti2, izlemeAyarlari);
-			}
-			
-			if(!premium){Cevir()}
-		}
-	}
+    scriptYukle("jquery.min.js","sc3")
+    scriptYukle("kelimeler.js","sc1")
+    id("sc1").onload=function(){
+        // Sadece ocr.js yükleme adımı aradan kaldırıldı, geri kalan her şey orijinal yapısında bırakıldı abicim
+        giris();                
+        //toFindDuplicates(birebir,0)
+        //kuralKontrol(\"milletine\",\"milletyine\")
+        
+        // --- MODERN KLASÖR/ELEMENT DEĞİŞİM İZLEYİCİSİ (MutationObserver) ---
+        if (typeof yuklemeEkrani$ !== 'undefined' && yuklemeEkrani$.length >= 2) {
+            const izleyici1 = new MutationObserver(function(mutations) {
+                yuklemeEkrani$[0].style.display = "none";
+            });
+            
+            const izleyici2 = new MutationObserver(function(mutations) {
+                yuklemeEkrani$[1].style.display = "none";
+            });
+            
+            const hedefCikti1 = document.getElementById("cikti1");
+            const hedefCikti2 = document.getElementById("cikti2");
+            
+            const izlemeAyarlari = { childList: true, subtree: true };
+            
+            if(hedefCikti1) izleyici1.observe(hedefCikti1, izlemeAyarlari);
+            if(hedefCikti2) izleyici2.observe(hedefCikti2, izlemeAyarlari);
+        }
+        
+        if(!premium){Cevir()}
+    }
 }
 
+
+
+function fontuKaydetVeUygula(fontAdi) {
+    document.getElementById('input').style.fontFamily = fontAdi;
+    localStorage.setItem('secilenFont', fontAdi);
+}
+
+function fontHafizasiniYukle() {
+    var kaydedilenFont = localStorage.getItem('secilenFont');
+    // Eğer yerel kayıt yoksa varsayılan olarak Hayrat Rika (BArabics) seçilsin
+    if (!kaydedilenFont) {
+        kaydedilenFont = 'BArabics';
+    }
+    
+    var secici = document.getElementById('fontSecici');
+    if (secici) {
+        secici.value = kaydedilenFont;
+    }
+    
+    var girdiAlani = document.getElementById('input');
+    if (girdiAlani) {
+        girdiAlani.style.fontFamily = kaydedilenFont;
+    }
+}
+
+function dizileriHazirla() {
+    let tumDiziler = [birebir, birebirRutus, gorunmezRutus, sade, sadeRutus, sonSadeRutus, aciklama];
+	
+	
+    tumDiziler.forEach(dizi => {
+        for (let i = 0; i < dizi.length; i++) {
+            // Sadece string olanları dönüştür
+			if (typeof dizi[i] === 'string') {
+				dizi[i] = dizi[i].replace(/{bas}|{b}/g, bas)
+                     .normalize("NFC")
+                     .replace(/{son}|{s}/g, son)
+                     .replace(/g\u0307/g, G);
+                     //.replace(/{g}/g, G);
+                                 
+            }
+        }
+    });
+}
 
 </script></body></html>
