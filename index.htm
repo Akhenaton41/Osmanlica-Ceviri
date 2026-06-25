@@ -5,21 +5,6 @@
 <link rel="stylesheet" type="text/css" href="css/font.css">
 <link rel="stylesheet" type="text/css" href="css/buton.css">
 
-<style>
-/* Editör kutusunun içindeki satır arası boşlukları ve paragrafları düzenler */
-#input p, #input div {
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
-    padding: 0 !important;
-}
-
-/* Arapça fontların aşırı yüksek satır açmasını engeller ve sıkılaştırır */
-.arabic {
-    line-height: 1.4 !important;
-    padding-top: 10px !important;
-}
-</style>
-
 </head><body>
 
 
@@ -28,7 +13,7 @@
 <table id="tablo" border="0" width="100%" cellspacing="0" cellpadding="0">
 	<tr class="golgeli">
 		<td colspan="2" id="banner">
-		<h1>Osmanlıca Çeviri Aracı</h1><h2>Sürüm 7.0</h2>
+		<h1>Osmanlıca Çeviri Aracı</h1><h2>Sürüm 6.0</h2>
 		</td>
 	</tr>
 	<tr>
@@ -40,37 +25,7 @@
 	</tr>
 	<tr>
 		<td colspan="2"><div id="ceviriInput" class="golgeli">
-			
-
-
-
-<div class="baslik" style="display: flex; justify-content: space-between; align-items: center; padding: 0 10px; height: 26px; box-sizing: border-box;">
-	<span>Osmanlıca metni aşağıdaki kutuya yapıştırın veya yazın.</span>
-	
-	<!-- Sağ Taraf: CSS Çakışmasını Ezen Birleşik Font Alanı -->
-	<div style="display: flex !important; align-items: center !important; height: 20px !important; border: 1px solid #7f9db9 !important; border-radius: 3px !important; background: #fff !important; padding: 0 !important; position: absolute !important; right: 20px !important; box-sizing: border-box !important; overflow: hidden !important;">
-		
-		<!-- Gri "font" Alanı (Kenarlıksız, Sadece Arka Plan) -->
-		<span style="font-family: 'MS Sans Serif', Tahoma, sans-serif; font-size: 11px; color: #444; background: #e1e1e1; height: 100%; padding: 0 6px; display: flex; align-items: center; user-select: none; box-sizing: border-box; margin: 0; border: none !important;">font</span>
-		
-		<!-- Saf Select Kutusu -->
-		<select id="fontSecici" onchange="fontuKaydetVeUygula(this.value);" style="font-family: 'MS Sans Serif', Tahoma, sans-serif; font-size: 11px; padding: 1px 2px; cursor: pointer; background: #fff; color: #000; height: 100%; width: 120px; box-sizing: border-box; outline: none; border: none !important; margin: 0; display: flex; align-items: center; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none; -webkit-box-shadow: none;">
-			<option value="Aref Ruqaa">Aref Ruqaa</option>
-			<option value="Divani">Divani</option>
-			<option value="Kufi">Kufi</option>
-			<option value="HayratMatbu">Matbu</option>
-			<option value="Nesih">Nesih</option>
-			<option value="BArabics">Rika</option>
-			<option value="EKalem">Sülüs</option>
-			<option value="Talik">Talik</option>
-		</select>
-		
-	</div>
-</div>
-
-
-
-
+			<div class="baslik">Osmanlıca metni aşağıdaki kutuya yapıştırın veya yazın.</div>
 			<div id="input" contenteditable="true" class="arabic" onInput="save()">
 				&nbsp;</div>
 		</div></td>
@@ -182,9 +137,7 @@ function giris() {
     sadeRutus = uzundanKisaya(duzelt(sadeRutus), 0);
     sonSadeRutus = uzundanKisaya(duzelt(sonSadeRutus), 0);
     aciklama = uzundanKisaya(duzelt(aciklama), 0);
-	
-	dizileriHazirla()
-	
+
     // --- TEMİZLENMİŞ DOSYA YÜKLEME ALANI (Sadece Düz Metin ve RTF) ---
     id("dosya").addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -238,12 +191,8 @@ function giris() {
     } else {
         arabicControl();
     }
-	
-	fontHafizasiniYukle();
-	
+
     istatistikGetir();
-    
-    cevir()
 }
 
 function id(e){return document.getElementById(e)}
@@ -290,37 +239,29 @@ function cevir() {
 
     m = FazlaBosluklariSil(m);
 
-    // Yardımcı döngü fonksiyonu: Değişiklik durana kadar çalıştır
-    function donguyleCevir(baslangicMetni, fonksiyon) {
-        let metin = baslangicMetni;
-        let degisti = true;
-        let tur = 0;
-        // Maksimum 10 tur sınırlaması güvenlik içindir
-        while (degisti && tur < 10) {
-            let eskiMetin = metin;
-            metin = fonksiyon(metin);
-            degisti = (metin !== eskiMetin);
-            tur++;
-        }
-        return metin;
-    }
-
-    // Basit replace döngüleri
     for (let i = 0; i < harfler.length; i++) {
         let [harf0, harf1] = harfler[i].split("·");
-        m = m.replace(new RegExp(harf1, "g"), harf0);
+        let pattern = new RegExp(harf1, "g");
+        m = m.replace(pattern, harf0);
     }
 
     for (let i = 0; i < kokler.length; i++) {
         let [kok0, kok1] = kokler[i].split("·");
-        m = m.replace(new RegExp(kok1, "g"), kok0);
+        let pattern = new RegExp(kok1, "g");
+        m = m.replace(pattern, kok0);
     }
 
-    // "t" metni üzerinde işlemler
+    let kontrolSayisi = 4;
     let t = m;
-    t = donguyleCevir(t, transkripsiyon);
-    t = donguyleCevir(t, SonRutus);
-    t = donguyleCevir(t, BitisRutusu);
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        t = transkripsiyon(t);
+    }
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        t = SonRutus(t);
+    }
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        t = BitisRutusu(t);
+    }
 
     let s = t;
 
@@ -330,10 +271,15 @@ function cevir() {
 
     duzelt2(t);
 
-    // "s" metni üzerinde işlemler
-    s = donguyleCevir(s, sadelestir);
-    s = donguyleCevir(s, sadelestirRutus);
-    s = donguyleCevir(s, BitisRutusu2);
+    for (let i = 0; i <= kontrolSayisi; i++) {
+        s = sadelestir(s);
+    }
+    for (let i = 0; i <= kontrolSayisi; i++) {
+        s = sadelestirRutus(s);
+    }
+    for (let ks = 0; ks <= kontrolSayisi; ks++) {
+        s = BitisRutusu2(s);
+    }
 
     t = aciklamaEkle(t);
     s = aciklamaEkle(s);
@@ -419,10 +365,6 @@ function BitisRutusu2(e) {
         e = e.replace(pattern, bire[1]);
     }
 
-// Boşluk veya satır başını yakala, "ke"yi gör, 
-    // arkasında alfabedeki harflerden biri yoksa "ki" yap.
-    e = e.replace(/(^|[\s])ke(?![a-zA-ZâÂêÊçÇğĞ&#7723;&#7722;&#7717;&#7716;ıİîÎ&#7731;&#7730;ñÑöÖs&#817;&#7776;şŞûÛüÜ&#380;&#379;])/g, "$1ki");
-
     return e;
 }
 
@@ -444,16 +386,17 @@ function sadelestirRutus(e) {
 }
 
 function transkripsiyon(e) {
+    for (let i = 0; i < birebir.length; i++) {
+        let bire = birebir[i].split("·");
+        let pattern = new RegExp(" " + bire[1] + " ", "g");
+        e = e.replace(pattern, " " + bire[0] + " ");
+    }
 
-e = e.normalize("NFC");
-
-for (let i = 0; i < birebir.length; i++) {
-    let [yeni, eski] = birebir[i].split("·");
-    
-    // Hem kelime etrafı boşluklu halini hem de yalın halini tek döngüde temizler
-    e = e.replace(new RegExp(" " + eski + " ", "g"), " " + yeni + " ");
-    e = e.replace(new RegExp(eski, "g"), yeni);
-}
+    for (let i = 0; i < birebir.length; i++) {
+        let bire = birebir[i].split("·");
+        let pattern = new RegExp(bire[1], "g");
+        e = e.replace(pattern, bire[0]);
+    }
 
     e = e.replace(/e k /g, "eñ ")
         .replace(/e ie /g, "eye ")
@@ -708,11 +651,6 @@ function FazlaBosluklariSil(e){
 		
 	// Son Rütuş
 	e=e.trim().replace(/(\r|\n)/g,"")
-
-	e = e.replace(/[\u2000-\u200D\uFEFF\u00A0]/g, " ");
-    
-    // 2. Şimdi fazla boşlukları tekrar temizle
-    e = e.replace(/\s{2,}/g, " ");
 	
 	e=e.replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ").replace(/\s{2,}/g, " ")
 	return e
@@ -1005,47 +943,5 @@ document.getElementsByTagName("body")[0].onload = function(){
     }
 }
 
-
-
-function fontuKaydetVeUygula(fontAdi) {
-    document.getElementById('input').style.fontFamily = fontAdi;
-    localStorage.setItem('secilenFont', fontAdi);
-}
-
-function fontHafizasiniYukle() {
-    var kaydedilenFont = localStorage.getItem('secilenFont');
-    // Eğer yerel kayıt yoksa varsayılan olarak Hayrat Rika (BArabics) seçilsin
-    if (!kaydedilenFont) {
-        kaydedilenFont = 'BArabics';
-    }
-    
-    var secici = document.getElementById('fontSecici');
-    if (secici) {
-        secici.value = kaydedilenFont;
-    }
-    
-    var girdiAlani = document.getElementById('input');
-    if (girdiAlani) {
-        girdiAlani.style.fontFamily = kaydedilenFont;
-    }
-}
-
-function dizileriHazirla() {
-    let tumDiziler = [birebir, birebirRutus, gorunmezRutus, sade, sadeRutus, sonSadeRutus, aciklama];
-	
-	
-    tumDiziler.forEach(dizi => {
-        for (let i = 0; i < dizi.length; i++) {
-            // Sadece string olanları dönüştür
-			if (typeof dizi[i] === 'string') {
-				dizi[i] = dizi[i].replace(/{bas}|{b}/g, bas)
-                     .normalize("NFC")
-                     .replace(/{son}|{s}/g, son)
-
-                                 
-            }
-        }
-    });
-}
 
 </script></body></html>
