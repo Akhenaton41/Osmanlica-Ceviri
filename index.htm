@@ -13,7 +13,7 @@
 <table id="tablo" border="0" width="100%" cellspacing="0" cellpadding="0">
 	<tr class="golgeli">
 		<td colspan="2" id="banner">
-		<h1>Osmanlıca Çeviri Aracı</h1><h2>Sürüm 6.0</h2>
+		<h1>Osmanlıca Çeviri Aracı</h1><h2>Sürüm 7.0</h2>
 		</td>
 	</tr>
 	<tr>
@@ -25,7 +25,22 @@
 	</tr>
 	<tr>
 		<td colspan="2"><div id="ceviriInput" class="golgeli">
-			<div class="baslik">Osmanlıca metni aşağıdaki kutuya yapıştırın veya yazın.</div>
+			<div class="baslik" style="display: flex; justify-content: space-between; align-items: center; padding: 0 10px; height: 26px; box-sizing: border-box;">
+				<span>Osmanlıca metni aşağıdaki kutuya yapıştırın veya yazın.</span>
+				<div style="display: flex !important; align-items: center !important; height: 20px !important; border: 1px solid #7f9db9 !important; border-radius: 3px !important; background: #fff !important; padding: 0 !important; position: absolute !important; right: 20px !important; box-sizing: border-box !important; overflow: hidden !important;">
+				<span style="font-family: 'MS Sans Serif', Tahoma, sans-serif; font-size: 11px; color: #444; background: #e1e1e1; height: 100%; padding: 0 6px; display: flex; align-items: center; user-select: none; box-sizing: border-box; margin: 0; border: none !important;">font</span>
+				<select id="fontSecici" onchange="fontuKaydetVeUygula(this.value);" style="font-family: 'MS Sans Serif', Tahoma, sans-serif; font-size: 11px; padding: 1px 2px; cursor: pointer; background: #fff; color: #000; height: 100%; width: 120px; box-sizing: border-box; outline: none; border: none !important; margin: 0; display: flex; align-items: center; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none; -webkit-box-shadow: none;">
+					<option value="Aref Ruqaa">Aref Ruqaa</option>
+					<option value="Divani">Divani</option>
+					<option value="EKalem">EKalem (Sülüs)</option>
+					<option value="BArabics">Hayrat Rika</option>
+					<option value="HayratMatbu">Hayrat Matbu</option>
+					<option value="Kufi">Kufi</option>
+					<option value="Nesih">Nesih</option>
+					<option value="Talik">Talik</option>
+				</select>		
+			</div>
+		</div>
 			<div id="input" contenteditable="true" class="arabic" onInput="save()">
 				&nbsp;</div>
 		</div></td>
@@ -138,17 +153,16 @@ function giris() {
     sonSadeRutus = uzundanKisaya(duzelt(sonSadeRutus), 0);
     aciklama = uzundanKisaya(duzelt(aciklama), 0);
 
-    // --- TEMİZLENMİŞ DOSYA YÜKLEME ALANI (Sadece Düz Metin ve RTF) ---
-    id("dosya").addEventListener('change', (e) => {
-        const file = e.target.files[0];
+    id("dosya").addEventListener('change', function(e) {
+        var file = e.target.files[0];
         if (!file) return;
 
-        const fr = new FileReader();
-        let uzanti = (file.name).lastIndexOf(".");
+        var fr = new FileReader();
+        var uzanti = (file.name).lastIndexOf(".");
         uzanti = (file.name).substr(uzanti + 1).toLowerCase();
 
-        fr.onload = () => {
-            let fileContent = fr.result;
+        fr.onload = function() {
+            var fileContent = fr.result;
 
             if (uzanti === "rtf") {
                 fileContent = rtf(fileContent);
@@ -168,28 +182,30 @@ function giris() {
 
     id("input").addEventListener('paste', stillKaldir);
 
-    // --- COOKIE OKUMA VE SAYFA İLK AÇILIŞINDAKİ ZIPLAMA ENGELLEYİCİ ---
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
     }
 
-    let x = document.cookie; 
-    if (x) {
-        x = x.substring(6);
-        if (x.length > 5) {
-            id("input").contentEditable = "false"; 
-            id("input").innerHTML = x;
-            
-            arabicControl();
-            
-            setTimeout(() => {
-                id("input").contentEditable = "true";
-            }, 50);
-        } else {
-            arabicControl();
-        }
+    // --- COOKIE YERİNE MODERN LOCALSTORAGE YÜKLEMESİ ---
+    var x = localStorage.getItem("osmanlica_metin");
+    if (x && x.length > 5) {
+        id("input").contentEditable = "false"; 
+        id("input").innerHTML = x;
+        
+        arabicControl();
+        
+        setTimeout(function() {
+            id("input").contentEditable = "true";
+        }, 50);
     } else {
         arabicControl();
+    }
+
+    // Kaydedilmiş font tercihi varsa yükle ve uygula
+    var kaydedilenFont = localStorage.getItem("osmanlica_secili_font");
+    if (kaydedilenFont) {
+        id("fontSecici").value = kaydedilenFont;
+        id("input").style.fontFamily = kaydedilenFont;
     }
 
     istatistikGetir();
@@ -943,5 +959,16 @@ document.getElementsByTagName("body")[0].onload = function(){
     }
 }
 
+
+function save(){
+	text=id("input").innerHTML
+	localStorage.setItem("osmanlica_metin", text);
+}
+
+function fontuKaydetVeUygula(fontAdi) {
+    // Seçilen yazı tipini editör kutusuna bas ve localStorage'a kaydet
+    id("input").style.fontFamily = fontAdi;
+    localStorage.setItem("osmanlica_secili_font", fontAdi);
+}
 
 </script></body></html>
