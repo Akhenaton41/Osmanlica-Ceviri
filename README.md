@@ -1,6 +1,6 @@
-# Osmanlıca Transkripsiyon ve Sadeleştirme Aracı (Sürüm 5.0)
+# Osmanlıca Transkripsiyon ve Sadeleştirme Aracı (Sürüm 7.0)
 
-Bu proje, Osmanlıca metinlerin transkripsiyonel çevirisini yapan ve aynı zamanda günümüz Türkçesine sadeleştiren web tabanlı, tamamen ücretsiz bir yazılımdır. Geliştirilen özel motor sayesinde, sunucu taraflı bağımlılıklara veya CORS engellerine takılmadan doğrudan tarayıcı üzerinde tıkır tıkır çalışır.
+Bu proje, Osmanlıca metinlerin transkripsiyonel çevirisini yapan ve aynı zamanda günümüz Türkçesine sadeleştiren web tabanlı, tamamen ücretsiz bir yazılımdır.
 
 ## 🚀 Canlı Önizleme
 Proje GitHub Pages üzerinde aktiftir. Doğrudan şu adresten deneyebilirsiniz:
